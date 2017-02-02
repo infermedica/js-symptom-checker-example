@@ -1,0 +1,29 @@
+{
+  "name": "simple-symptom-checker",
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "TBD",
+  "repository": "git@bitbucket.org:infermedica/simple-symptom-checker.git",
+  "author": "Infermedica",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/**/*.js webpack.config.js",
+    "build": "webpack",
+    "dev": "webpack-dev-server"
+  },
+  "dependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.14.1",
+    "eslint-config-semistandard": "^7.0.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-loader": "^1.6.1",
+    "semistandard": "^9.2.1",
+    "standard": "^8.6.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^1.16.3"
+  }
+}
