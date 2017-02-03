@@ -39,7 +39,12 @@ module.exports = {
                     plugins: ['transform-runtime'],
                     presets: ['es2015']
                 }
-            }
+            },
+          {
+            test: /\.css/,
+            loaders: ['style', 'css'],
+            include: __dirname + '/src'
+          }
         ]
     }
 };
