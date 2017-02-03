@@ -5,14 +5,13 @@
 let template = `
   <div class="card">
       <div class="card-header">
-          Demo application
+          Symptom Checker Demo
       </div>
-      <div class="card-block">
-          <h4 class="card-title">Question</h4>
-          <p class="card-text">Answers...</p>
+      <div id="step-container" class="card-block">
+        <!--dynamic content goes here-->
       </div>
       <div class="card-footer">
-          <a href="#" class="btn btn-primary float-right">Next</a>
+          <button id="next-step" class="btn btn-primary float-right">Next</button>
       </div>
   </div>
 `;
