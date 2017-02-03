@@ -11,7 +11,7 @@ export default class InfermedicaApi {
     this.appKey = appKey;
   }
 
-  _req (method, url, payload) {
+  _req (method, url, data) {
     return new Promise((resolve, reject) => {
       /* global XMLHttpRequest */
       let req = new XMLHttpRequest();
@@ -34,12 +34,16 @@ export default class InfermedicaApi {
         reject(new Error('Network error'));
       };
 
-      req.send();
+      req.send(data);
     });
   }
 
   _get (url) {
     return this._req('GET', url);
+  }
+
+  _post (url, data) {
+    return this._req('POST', url, data);
   }
 
   getSymptoms () {
@@ -50,6 +54,21 @@ export default class InfermedicaApi {
   getRiskFactors () {
     console.log('InfermedicaApi::getRiskFactors');
     return this._get('risk_factors').then(JSON.parse);
+  }
+
+  parse (text) {
+    console.log('InfermedicaApi::parse');
+    return this._post('parse', JSON.stringify({'text': text})).then(JSON.parse);
+  }
+
+  diagnosis (data) {
+    console.log('InfermedicaApi::diagnosis');
+    return this._post('diagnosis', JSON.stringify(data)).then(JSON.parse);
+  }
+
+  explain (data) {
+    console.log('InfermedicaApi::explain');
+    return this._post('explain', JSON.stringify(data)).then(JSON.parse);
   }
 
 }

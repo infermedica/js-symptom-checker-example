@@ -16,3 +16,4 @@ api.getSymptoms().then((data) => { console.log(data); });
 
 api.getRiskFactors().then((data) => { console.log(data); });
 
+api.parse('I got a fever').then((data) => { console.log(data); });
