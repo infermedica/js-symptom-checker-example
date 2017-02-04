@@ -30,13 +30,19 @@ class DemoApp {
 
     this.steps = [
       {
-        template: 'welcome'
+        template: 'welcome',
+        data: null
       },
       {
-        template: 'basic'
+        template: 'basic',
+        data: null
       },
       {
-        template: 'symptoms'
+        template: 'symptoms',
+        data: {
+          symptoms: COMMON_SYMPTOMS,
+          allSymptoms: this.api.getSymptoms()
+        }
       }
     ];
 
@@ -46,7 +52,10 @@ class DemoApp {
   }
 
   _loadStepTemplate () {
-    this.root.querySelector('#step-container').innerHTML = stepTemplates[this.steps[this.currentStep].template]();
+    // TODO: Use promises instead of returning from stepTemplates
+    stepTemplates[this.steps[this.currentStep].template](this.steps[this.currentStep].data).then((html) => {
+      this.root.querySelector('#step-container').innerHTML = html;
+    });
   }
 
   nextStep () {
