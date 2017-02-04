@@ -11,7 +11,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/public'), filename: 'bundle.js'
     },
-    devServer: {publicPath: '/public/'},
+    devServer: {publicPath: '/public/', inline: true},
     resolve: {extensions: ['.js', '.json']},
     stats: {colors: true, reasons: true, chunks: false},
     module: {
@@ -39,7 +39,12 @@ module.exports = {
                     plugins: ['transform-runtime'],
                     presets: ['es2015']
                 }
-            }
+            },
+          {
+            test: /\.css/,
+            loaders: ['style', 'css'],
+            include: __dirname + '/src'
+          }
         ]
     }
 };
