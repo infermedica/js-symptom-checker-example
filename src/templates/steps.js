@@ -40,7 +40,6 @@ let stepTemplates = {
   },
   'symptoms': (data) => {
     return new Promise((resolve) => {
-
       let checkbox = (label) => {
         return `
           <div class="form-group">
@@ -68,6 +67,103 @@ let stepTemplates = {
           </p>
         `);
       });
+    });
+  },
+  'other-symptoms': (data) => {
+    return new Promise((resolve) => {
+      resolve(`
+        <h4 class="card-title">Please describe your other symptoms.</h4>
+        <p class="card-text">
+          <form>
+            <div class="form-group">
+              <label for="input-feel">How do you feel?</label>
+              <textarea class="form-control" id="input-feel" rows="4"></textarea>
+            </div>
+          </form>
+        </p>
+      `);
+    });
+  },
+  'geo-risks': (data) => {
+    return new Promise((resolve) => {
+      let checkbox = (label) => {
+        return `
+          <div class="form-group">
+            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+              <input type="checkbox" class="custom-control-input">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">${label}</span>
+            </label>
+          </div>`;
+      };
+      let checkboxes = '';
+
+      data.allRiskFactors.then((symptoms) => {
+        for (const s of symptoms) {
+          if (data.locationRiskFactors.indexOf(s.id) >= 0) {
+            checkboxes += checkbox(s.name);
+          }
+        }
+        resolve(`
+          <h4 class="card-title">Please select where you live or have recently traveled to.</h4>
+          <p class="card-text">
+            <form>
+              ${checkboxes}
+            </form>
+          </p>
+        `);
+      });
+    });
+  },
+  'common-risks': (data) => {
+    return new Promise((resolve) => {
+      let checkbox = (label) => {
+        return `
+          <div class="form-group">
+            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+              <input type="checkbox" class="custom-control-input">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">${label}</span>
+            </label>
+          </div>`;
+      };
+      let checkboxes = '';
+
+      data.allRiskFactors.then((symptoms) => {
+        for (const s of symptoms) {
+          if (data.commonRiskFactors.indexOf(s.id) >= 0) {
+            checkboxes += checkbox(s.name);
+          }
+        }
+        resolve(`
+          <h4 class="card-title">Please check all that apply to you.</h4>
+          <p class="card-text">
+            <form>
+              ${checkboxes}
+            </form>
+          </p>
+        `);
+      });
+    });
+  },
+  'question': () => {
+    return new Promise((resolve) => {
+      resolve(`
+        <h4 class="card-title">Question</h4>
+        <p class="card-text">
+          ANSWER PANEL
+        </p>
+      `);
+    });
+  },
+  'summary': () => {
+    return new Promise((resolve) => {
+      resolve(`
+        <h4 class="card-title">Summary</h4>
+        <p class="card-text">
+        
+        </p>
+      `);
     });
   }
 };
