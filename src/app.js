@@ -37,46 +37,46 @@ class DemoApp {
     this.steps = [
       {
         template: 'welcome',
-        data: null
+        context: null
       },
       {
         template: 'basic',
-        data: null
+        context: null
       },
       {
         template: 'symptoms',
-        data: {
+        context: {
           symptoms: COMMON_SYMPTOMS,
           allSymptoms: this.api.getSymptoms()
         }
       },
       {
         template: 'other-symptoms',
-        data: null
+        context: null
       },
       {
         template: 'geo-risks',
-        data: {
+        context: {
           locationRiskFactors: LOCATION_RISK_FACTORS,
           allRiskFactors: this.api.getRiskFactors()
         }
       },
       {
         template: 'common-risks',
-        data: {
+        context: {
           commonRiskFactors: COMMON_RISK_FACTORS,
           allRiskFactors: this.api.getRiskFactors()
         }
       },
       {
         template: 'question',
-        data: {
+        context: {
 
         }
       },
       {
         template: 'summary',
-        data: {
+        context: {
 
         }
       }
@@ -88,7 +88,7 @@ class DemoApp {
   }
 
   _loadStepTemplate () {
-    stepTemplates[this.steps[this.currentStep].template](this.steps[this.currentStep].data).then((html) => {
+    stepTemplates[this.steps[this.currentStep].template](this.steps[this.currentStep].context).then((html) => {
       this.root.querySelector('#step-container').innerHTML = html;
     });
   }

@@ -38,7 +38,7 @@ let stepTemplates = {
       `);
     });
   },
-  'symptoms': (data) => {
+  'symptoms': (context) => {
     return new Promise((resolve) => {
       let checkbox = (label) => {
         return `
@@ -52,9 +52,9 @@ let stepTemplates = {
       };
       let checkboxes = '';
 
-      data.allSymptoms.then((symptoms) => {
+      context.allSymptoms.then((symptoms) => {
         for (const s of symptoms) {
-          if (data.symptoms.indexOf(s.id) >= 0) {
+          if (context.symptoms.indexOf(s.id) >= 0) {
             checkboxes += checkbox(s.name);
           }
         }
@@ -69,7 +69,7 @@ let stepTemplates = {
       });
     });
   },
-  'other-symptoms': (data) => {
+  'other-symptoms': () => {
     return new Promise((resolve) => {
       resolve(`
         <h4 class="card-title">Please describe your other symptoms.</h4>
@@ -84,7 +84,7 @@ let stepTemplates = {
       `);
     });
   },
-  'geo-risks': (data) => {
+  'geo-risks': (context) => {
     return new Promise((resolve) => {
       let checkbox = (label) => {
         return `
@@ -98,9 +98,9 @@ let stepTemplates = {
       };
       let checkboxes = '';
 
-      data.allRiskFactors.then((symptoms) => {
+      context.allRiskFactors.then((symptoms) => {
         for (const s of symptoms) {
-          if (data.locationRiskFactors.indexOf(s.id) >= 0) {
+          if (context.locationRiskFactors.indexOf(s.id) >= 0) {
             checkboxes += checkbox(s.name);
           }
         }
@@ -115,7 +115,7 @@ let stepTemplates = {
       });
     });
   },
-  'common-risks': (data) => {
+  'common-risks': (context) => {
     return new Promise((resolve) => {
       let checkbox = (label) => {
         return `
@@ -129,9 +129,9 @@ let stepTemplates = {
       };
       let checkboxes = '';
 
-      data.allRiskFactors.then((symptoms) => {
+      context.allRiskFactors.then((symptoms) => {
         for (const s of symptoms) {
-          if (data.commonRiskFactors.indexOf(s.id) >= 0) {
+          if (context.commonRiskFactors.indexOf(s.id) >= 0) {
             checkboxes += checkbox(s.name);
           }
         }
