@@ -26,7 +26,7 @@ class DemoApp extends App {
       config.API_KEY
     );
 
-    this.currentStep = 1;
+    this.currentStep = 3;
 
     this.views = [
       {
@@ -54,11 +54,23 @@ class DemoApp extends App {
         context: {
           symptoms: COMMON_SYMPTOMS,
           api: this.api
+        },
+        binds: {
+          '.input-symptom': {
+            type: 'change',
+            listener: this.handleSymptomsChange
+          }
         }
       },
       {
         template: 'other-symptoms',
-        context: null
+        context: null,
+        binds: {
+          '#input-feel': {
+            type: 'input',
+            listener: this.handleFeelChange
+          }
+        }
       },
       {
         template: 'geo-risks',
@@ -102,12 +114,52 @@ class DemoApp extends App {
     console.log(e.target.value);
   }
 
+  handleFeelChange (e) {
+    console.log('feel changed');
+    console.log(this);
+    console.log(e.target.value);
+  }
+
+  handleSymptomsChange (e) {
+    console.log('symptoms changed');
+    console.log(this);
+    console.log(e.target.value);
+  }
+
   // renders an application inside it's container
   render () {
     super.render();
     this.nextButton = this.el.querySelector('#next-step');
     this.nextButton.addEventListener('click', e => this.nextStep(e));
     this._loadStepTemplate();
+  }
+
+  _bindEvents () {
+    let currentView = this.views[this.currentStep];
+    for (let b in currentView.binds) {
+      // TODO: use the same mechanism in both cases
+      if (b.startsWith('.')) {
+        this.el.querySelectorAll('#step-container ' + b).forEach((item) => {
+          item.addEventListener(currentView.binds[b].type, currentView.binds[b].listener);
+        });
+      } else {
+        this.el.querySelector('#step-container ' + b).addEventListener(currentView.binds[b].type, currentView.binds[b].listener);
+      }
+    }
+  }
+
+  _unbindEvents () {
+    let currentView = this.views[this.currentStep];
+    for (let b in currentView.binds) {
+      // TODO: use the same mechanism in both cases
+      if (b.startsWith('.')) {
+        this.el.querySelectorAll('#step-container ' + b).forEach((item) => {
+          item.removeEventListener(currentView.binds[b].type, currentView.binds[b].listener);
+        });
+      } else {
+        this.el.querySelector('#step-container ' + b).removeEventListener(currentView.binds[b].type, currentView.binds[b].listener);
+      }
+    }
   }
 
   _loadStepTemplate () {
@@ -117,18 +169,12 @@ class DemoApp extends App {
     stepTemplates[currentView.template](currentView.context).then((html) => {
       this.el.querySelector('#step-container').innerHTML = html;
 
-      for (let b in currentView.binds) {
-        this.el.querySelector('#step-container ' + b).addEventListener(currentView.binds[b].type, currentView.binds[b].listener);
-      }
+      this._bindEvents();
     });
   }
 
   nextStep () {
-    // clean up current event listeners
-    let currentView = this.views[this.currentStep];
-    for (let b in currentView.binds) {
-      this.el.querySelector('#step-container ' + b).removeEventListener(currentView.binds[b].type, currentView.binds[b].listener);
-    }
+    this._unbindEvents();
 
     this.currentStep += 1;
     this.currentStep = this.currentStep % 8;

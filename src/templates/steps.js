@@ -44,7 +44,7 @@ let stepTemplates = {
         return `
           <div class="form-group">
             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-              <input type="checkbox" class="custom-control-input">
+              <input type="checkbox" class="input-symptom custom-control-input">
               <span class="custom-control-indicator"></span>
               <span class="custom-control-description">${label}</span>
             </label>
