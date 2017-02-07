@@ -3,3 +3,11 @@
 body {
     padding-top: 15px;
 }
+
+#step-container {
+    min-height: 450px;
+}
+
+button {
+    cursor: pointer;
+}

@@ -5,7 +5,7 @@
 let template = `
   <div class="card">
       <div class="card-header">
-          Symptom Checker Demo
+          Symptom Checker Demo <span class="float-right text-muted">powered by <a href="https://developer.infermedica.com/">Infermedica</a></span>
       </div>
       <div id="step-container" class="card-block">
         <!--dynamic content goes here-->

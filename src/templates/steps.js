@@ -11,7 +11,7 @@ let stepTemplates = {
       `);
     });
   },
-  'basic': () => {
+  'basic': (context) => {
     return new Promise((resolve) => {
       resolve(`
         <h4 class="card-title">Please select your sex and age.</h4>
@@ -52,7 +52,7 @@ let stepTemplates = {
       };
       let checkboxes = '';
 
-      context.allSymptoms.then((symptoms) => {
+      context.api.getSymptoms().then((symptoms) => {
         for (const s of symptoms) {
           if (context.symptoms.indexOf(s.id) >= 0) {
             checkboxes += checkbox(s.name);
@@ -98,7 +98,7 @@ let stepTemplates = {
       };
       let checkboxes = '';
 
-      context.allRiskFactors.then((symptoms) => {
+      context.api.getRiskFactors().then((symptoms) => {
         for (const s of symptoms) {
           if (context.locationRiskFactors.indexOf(s.id) >= 0) {
             checkboxes += checkbox(s.name);
@@ -129,10 +129,10 @@ let stepTemplates = {
       };
       let checkboxes = '';
 
-      context.allRiskFactors.then((symptoms) => {
-        for (const s of symptoms) {
-          if (context.commonRiskFactors.indexOf(s.id) >= 0) {
-            checkboxes += checkbox(s.name);
+      context.api.getRiskFactors().then((risks) => {
+        for (const r of risks) {
+          if (context.commonRiskFactors.indexOf(r.id) >= 0) {
+            checkboxes += checkbox(r.name);
           }
         }
         resolve(`

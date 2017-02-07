@@ -22,7 +22,7 @@ export default class InfermedicaApi {
       req.setRequestHeader('Model', this.apiModel);
       req.setRequestHeader('Content-Type', 'application/json');
 
-      req.onload = function () {
+      req.onload = () => {
         if (req.status === 200) {
           resolve(req.response);
         } else {
@@ -30,7 +30,7 @@ export default class InfermedicaApi {
         }
       };
 
-      req.onerror = function () {
+      req.onerror = () => {
         reject(new Error('Network error'));
       };
 
