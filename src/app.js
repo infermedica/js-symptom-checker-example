@@ -5,9 +5,9 @@
 // eslint-disable-next-line no-unused-vars
 import s from './styles/styles.css';
 import config from './config.js';
-import InfermedicaApi from './infermedica-api';
 import template from './templates/base';
-import stepTemplates from './templates/steps';
+
+import InfermedicaApi from './infermedica-api';
 import App from './base/app';
 import Controller from './base/controller';
 
@@ -26,92 +26,53 @@ class DemoApp extends App {
       config.API_KEY
     );
 
-    this.currentStep = 3;
+    this.currentStep = 0;
 
     this.views = [
       {
-        template: 'welcome',
         context: null,
-        binds: null
+        view: 'welcome'
       },
       {
-        template: 'basic',
-        context: {
-        },
-        binds: {
-          '#input-sex': {
-            type: 'change',
-            listener: this.handleSexChange
-          },
-          '#input-age': {
-            type: 'change',
-            listener: this.handleAgeChange
-          }
-        }
+        context: null,
+        view: 'basic'
       },
       {
-        template: 'symptoms',
         context: {
           symptoms: COMMON_SYMPTOMS,
           api: this.api
         },
-        binds: {
-          '.input-symptom': {
-            type: 'change',
-            listener: this.handleSymptomsChange
-          }
-        }
+        view: 'symptoms'
       },
       {
-        context: null,
+        context: {
+          api: this.api
+        },
         view: 'other-symptoms'
       },
       {
-        template: 'geo-risks',
         context: {
           locationRiskFactors: LOCATION_RISK_FACTORS,
           api: this.api
-        }
+        },
+        view: 'geo-risks'
       },
       {
-        template: 'common-risks',
         context: {
           commonRiskFactors: COMMON_RISK_FACTORS,
           api: this.api
-        }
+        },
+        view: 'common-risks'
       },
       {
-        template: 'question',
-        context: {
-
-        }
+        context: null,
+        view: 'question'
       },
       {
-        template: 'summary',
-        context: {
-
-        }
+        context: null,
+        view: 'summary'
       }
     ];
-  }
-
-  // view events' handlers
-  handleSexChange (e) {
-    console.log('sex changed');
-    console.log(this);
-    console.log(e.target.value);
-  }
-
-  handleAgeChange (e) {
-    console.log('age changed');
-    console.log(this);
-    console.log(e.target.value);
-  }
-
-  handleSymptomsChange (e) {
-    console.log('symptoms changed');
-    console.log(this);
-    console.log(e.target.value);
   }
 
   render () {
@@ -133,7 +94,7 @@ class DemoApp extends App {
 
     const currentView = this.views[this.currentStep];
     this.controller.destroyView();
-    this.controller.setView(stepTemplates[currentView.template], currentView.context, currentView.binds);
+    this.controller.setView(currentView.view, currentView.context);
   }
 }
 

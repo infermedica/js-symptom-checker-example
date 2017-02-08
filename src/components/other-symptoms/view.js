@@ -2,24 +2,34 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 08/02/2017.
  */
 
+import _ from 'lodash';
+
 import View from '../../base/view';
 import template from './template';
 
 export default class OtherSymptomsView extends View {
   constructor (el, context) {
-    let binds = {
+    const handleFeelChange = (e) => {
+      this.context.api.parse(e.target.value).then((response) => {
+        this.updateObservations(response.mentions);
+      });
+    };
+
+    const binds = {
       '#input-feel': {
         type: 'input',
-        listener: 'handleFeelChange'
+        listener: _.debounce(handleFeelChange, 400)
       }
     };
+
     super(el, template, context, binds);
   }
 
-  handleFeelChange (e) {
-    console.log('OMG');
-    //   this.api.parse(e.target.value).then((response) => {
-    //     console.log(response);
-    //   });
+  updateObservations (observations) {
+    let t = '';
+    for (let o of observations) {
+      t += `<li>${o.name}</li>`;
+    }
+    this.el.querySelector('#observations').innerHTML = t;
   }
 }

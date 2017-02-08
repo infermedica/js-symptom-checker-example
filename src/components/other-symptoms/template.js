@@ -2,10 +2,8 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 08/02/2017.
  */
 
-let template = () => {
+let template = (context) => {
   return new Promise((resolve) => {
-    let observations = `<li>sth here</li>`;
-
     resolve(`
         <h4 class="card-title">Please describe your other symptoms.</h4>
         <div class="card-text">
@@ -16,8 +14,7 @@ let template = () => {
             </div>
           </form>
           <p>Identified observations:</p>
-          <ul>
-            ${observations}
+          <ul id="observations">
           </ul>
         </div>
       `);
