@@ -71,16 +71,22 @@ let stepTemplates = {
   },
   'other-symptoms': () => {
     return new Promise((resolve) => {
+      let observations = `<li>sth here</li>`;
+
       resolve(`
         <h4 class="card-title">Please describe your other symptoms.</h4>
-        <p class="card-text">
+        <div class="card-text">
           <form>
             <div class="form-group">
               <label for="input-feel">How do you feel?</label>
               <textarea class="form-control" id="input-feel" rows="4"></textarea>
             </div>
           </form>
-        </p>
+          <p>Identified observations:</p>
+          <ul>
+            ${observations}
+          </ul>
+        </div>
       `);
     });
   },

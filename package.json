@@ -21,6 +21,7 @@
     "eslint-config-semistandard": "^7.0.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-loader": "^1.6.1",
+    "lodash": "^4.17.4",
     "semistandard": "^9.2.1",
     "standard": "^8.6.0",
     "style-loader": "^0.13.1",

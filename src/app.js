@@ -9,8 +9,10 @@ import InfermedicaApi from './infermedica-api';
 import template from './templates/base';
 import stepTemplates from './templates/steps';
 
-import App from './base/app';
+import _ from 'lodash';
 
+import App from './base/app';
+import Controller from './base/controller';
 class DemoApp extends App {
   constructor (el) {
     super(el, template);
@@ -26,7 +28,13 @@ class DemoApp extends App {
       config.API_KEY
     );
 
-    this.currentStep = 3;
+    this.currentStep = 0;
+
+    let handleFeelChange = (e) => {
+      this.api.parse(e.target.value).then((response) => {
+        console.log(response);
+      });
+    };
 
     this.views = [
       {
@@ -68,7 +76,7 @@ class DemoApp extends App {
         binds: {
           '#input-feel': {
             type: 'input',
-            listener: this.handleFeelChange
+            listener: _.debounce(handleFeelChange, 400)
           }
         }
       },
@@ -114,71 +122,32 @@ class DemoApp extends App {
     console.log(e.target.value);
   }
 
-  handleFeelChange (e) {
-    console.log('feel changed');
-    console.log(this);
-    console.log(e.target.value);
-  }
-
   handleSymptomsChange (e) {
     console.log('symptoms changed');
     console.log(this);
     console.log(e.target.value);
   }
 
-  // renders an application inside it's container
   render () {
     super.render();
     this.nextButton = this.el.querySelector('#next-step');
     this.nextButton.addEventListener('click', e => this.nextStep(e));
-    this._loadStepTemplate();
   }
 
-  _bindEvents () {
-    let currentView = this.views[this.currentStep];
-    for (let b in currentView.binds) {
-      // TODO: use the same mechanism in both cases
-      if (b.startsWith('.')) {
-        this.el.querySelectorAll('#step-container ' + b).forEach((item) => {
-          item.addEventListener(currentView.binds[b].type, currentView.binds[b].listener);
-        });
-      } else {
-        this.el.querySelector('#step-container ' + b).addEventListener(currentView.binds[b].type, currentView.binds[b].listener);
-      }
-    }
-  }
+  startInterview () {
+    this.controller = new Controller(this.el.querySelector('#step-container'));
 
-  _unbindEvents () {
-    let currentView = this.views[this.currentStep];
-    for (let b in currentView.binds) {
-      // TODO: use the same mechanism in both cases
-      if (b.startsWith('.')) {
-        this.el.querySelectorAll('#step-container ' + b).forEach((item) => {
-          item.removeEventListener(currentView.binds[b].type, currentView.binds[b].listener);
-        });
-      } else {
-        this.el.querySelector('#step-container ' + b).removeEventListener(currentView.binds[b].type, currentView.binds[b].listener);
-      }
-    }
-  }
-
-  _loadStepTemplate () {
-    this.el.querySelector('#step-container').innerHTML = '<p>Loading...</p>';
-    let currentView = this.views[this.currentStep];
-
-    stepTemplates[currentView.template](currentView.context).then((html) => {
-      this.el.querySelector('#step-container').innerHTML = html;
-
-      this._bindEvents();
-    });
+    const currentView = this.views[this.currentStep];
+    this.controller.setView(stepTemplates[currentView.template], currentView.context, currentView.binds);
   }
 
   nextStep () {
-    this._unbindEvents();
-
     this.currentStep += 1;
     this.currentStep = this.currentStep % 8;
-    this._loadStepTemplate();
+
+    const currentView = this.views[this.currentStep];
+    this.controller.destroyView();
+    this.controller.setView(stepTemplates[currentView.template], currentView.context, currentView.binds);
   }
 }
 
