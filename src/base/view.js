@@ -31,7 +31,7 @@ export default class View {
           item.addEventListener(this.binds[b].type, this.binds[b].listener);
         });
       } else {
-        this.el.querySelector(b).addEventListener(this.binds[b].type, this.binds[b].listener);
+        this.el.querySelector(b).addEventListener(this.binds[b].type, this[this.binds[b].listener]);
       }
     }
   }

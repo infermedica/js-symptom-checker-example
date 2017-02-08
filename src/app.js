@@ -8,11 +8,9 @@ import config from './config.js';
 import InfermedicaApi from './infermedica-api';
 import template from './templates/base';
 import stepTemplates from './templates/steps';
-
-import _ from 'lodash';
-
 import App from './base/app';
 import Controller from './base/controller';
+
 class DemoApp extends App {
   constructor (el) {
     super(el, template);
@@ -28,13 +26,7 @@ class DemoApp extends App {
       config.API_KEY
     );
 
-    this.currentStep = 0;
-
-    let handleFeelChange = (e) => {
-      this.api.parse(e.target.value).then((response) => {
-        console.log(response);
-      });
-    };
+    this.currentStep = 3;
 
     this.views = [
       {
@@ -71,14 +63,8 @@ class DemoApp extends App {
         }
       },
       {
-        template: 'other-symptoms',
         context: null,
-        binds: {
-          '#input-feel': {
-            type: 'input',
-            listener: _.debounce(handleFeelChange, 400)
-          }
-        }
+        view: 'other-symptoms'
       },
       {
         template: 'geo-risks',
@@ -138,7 +124,7 @@ class DemoApp extends App {
     this.controller = new Controller(this.el.querySelector('#step-container'));
 
     const currentView = this.views[this.currentStep];
-    this.controller.setView(stepTemplates[currentView.template], currentView.context, currentView.binds);
+    this.controller.setView(currentView.view, currentView.context);
   }
 
   nextStep () {

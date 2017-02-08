@@ -2,19 +2,24 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 06/02/2017.
  */
 
-import View from './view';
+import OtherSymptomsView from '../components/other-symptoms/view';
 
 export default class Controller {
   constructor (el) {
     this.el = el;
+
+    this.viewMapper = {
+      'other-symptoms': OtherSymptomsView
+    };
   }
 
   render () {
     this.view.render();
   }
 
-  setView (template, context, binds) {
-    this.view = new View(this.el, template, context, binds);
+  setView (name, context) {
+    let ViewClass = this.viewMapper[name];
+    this.view = new ViewClass(this.el, context);
     this.render();
   }
 
