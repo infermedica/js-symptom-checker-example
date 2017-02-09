@@ -11,7 +11,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/public'), filename: 'bundle.js'
     },
-    devServer: {publicPath: '/public/', inline: true},
+    devServer: {publicPath: '/public/', inline: true, host: '0.0.0.0'},
     resolve: {extensions: ['.js', '.json']},
     stats: {colors: true, reasons: true, chunks: false},
     module: {
