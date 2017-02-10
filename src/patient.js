@@ -7,58 +7,8 @@ import _ from 'lodash';
 export default class Patient {
   constructor () {
     this.symptoms = {};
-    //
-    // // mocked data
     this.sex = 'male';
     this.age = 30;
-    //
-    // this.symptoms = {
-    //   's_13': false,
-    //   's_1190': false,
-    //   's_88': false,
-    //   's_98': true,
-    //   's_21': true,
-    //   's_119': false,
-    //   's_156': false,
-    //   's_285': false,
-    //   's_241': false,
-    //   's_50': true,
-    //   'p_19': false,
-    //   'p_17': false,
-    //   'p_15': true,
-    //   'p_14': false,
-    //   'p_21': false,
-    //   'p_13': false,
-    //   'p_16': false,
-    //   'p_20': false,
-    //   'p_18': false,
-    //   'p_22': false,
-    //   'p_8': false,
-    //   'p_10': false,
-    //   'p_9': false,
-    //   'p_28': true, // additionals
-    //   'p_39': true,
-    //   's_100': true,
-    //   's_604': true,
-    //   's_1193': false,
-    //   's_25': false,
-    //   's_23': false,
-    //   's_1197': false,
-    //   's_51': false,
-    //   's_37': false
-    // };
-  }
-
-  addEvidence () {
-    // TODO
-  }
-
-  hasEvidence () {
-    // TODO
-  }
-
-  toJSON () {
-    // TODO
   }
 
   setSex (s) {

@@ -14,7 +14,7 @@ let template = (context) => {
             </div>
           </form>
           <p>Identified observations:</p>
-          <ul id="observations">
+          <ul class="list-unstyled" id="observations">
           </ul>
         </div>
       `);
