@@ -23,13 +23,32 @@ export default class OtherSymptomsView extends View {
     };
 
     super(el, template, context, binds);
+    this.observations = {};
   }
 
   updateObservations (observations) {
+    this.observations = observations;
+    console.log(this.observations);
     let t = '';
     for (let o of observations) {
       t += `<li>${o.name}</li>`;
     }
     this.el.querySelector('#observations').innerHTML = t;
+  }
+
+  saveObservations () {
+    if (_.isEmpty(this.observations)) {
+      return;
+    }
+    const pairs = this.observations.map((item) => {
+      return [item.id, true];
+    });
+    const o = _.fromPairs(pairs);
+    this.context.patient.addSymptomsGroup(o);
+  }
+
+  destroy () {
+    this.saveObservations();
+    super.destroy();
   }
 }

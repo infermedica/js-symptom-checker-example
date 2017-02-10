@@ -4,11 +4,11 @@
 
 let template = (context) => {
   return new Promise((resolve) => {
-    let checkbox = (label) => {
+    let checkbox = (label, id) => {
       return `
           <div class="form-group">
             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-              <input type="checkbox" class="input-symptom custom-control-input">
+              <input id="${id}" type="checkbox" class="input-symptom custom-control-input">
               <span class="custom-control-indicator"></span>
               <span class="custom-control-description">${label}</span>
             </label>
@@ -19,16 +19,16 @@ let template = (context) => {
     context.api.getSymptoms().then((symptoms) => {
       for (const s of symptoms) {
         if (context.symptoms.indexOf(s.id) >= 0) {
-          checkboxes += checkbox(s.name);
+          checkboxes += checkbox(s.name, s.id);
         }
       }
       resolve(`
           <h4 class="card-title">Do you have any of the following symptoms?</h4>
-          <p class="card-text">
+          <div class="card-text">
             <form>
               ${checkboxes}
             </form>
-          </p>
+          </div>
         `);
     });
   });

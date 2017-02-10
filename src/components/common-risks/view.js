@@ -7,10 +7,14 @@ import template from './template';
 
 export default class CommonRisksView extends View {
   constructor (el, context) {
-    let handleRisksChange = (e) => {
-      console.log('risks changed');
-      console.log(this);
-      console.log(e.target.value);
+    context.commonRiskFactors = ['p_8', 'p_9', 'p_10', 'p_28'];
+
+    const handleRisksChange = (e) => {
+      let group = {};
+      this.el.querySelectorAll('.input-risk').forEach((item) => {
+        group[item.id] = item.checked;
+      });
+      this.context.patient.addSymptomsGroup(group);
     };
 
     const binds = {

@@ -7,16 +7,12 @@ import template from './template';
 
 export default class BasicView extends View {
   constructor (el, context) {
-    let handleSexChange = (e) => {
-      console.log('sex changed');
-      console.log(this);
-      console.log(e.target.value);
+    const handleSexChange = (e) => {
+      this.context.patient.setSex(e.target.value);
     };
 
-    let handleAgeChange = (e) => {
-      console.log('age changed');
-      console.log(this);
-      console.log(e.target.value);
+    const handleAgeChange = (e) => {
+      this.context.patient.setAge(e.target.value);
     };
 
     const binds = {
@@ -31,5 +27,6 @@ export default class BasicView extends View {
     };
 
     super(el, template, context, binds);
+    this.context.patient.reset();
   }
 }

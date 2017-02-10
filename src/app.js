@@ -11,13 +11,13 @@ import InfermedicaApi from './infermedica-api';
 import App from './base/app';
 import Controller from './base/controller';
 
+import Patient from './patient';
+
+// TODO: subclass controller
+
 class DemoApp extends App {
   constructor (el) {
     super(el, template);
-
-    const COMMON_SYMPTOMS = ['s_21', 's_1190', 's_98', 's_119', 's_88', 's_13', 's_156', 's_285', 's_241'];
-    const LOCATION_RISK_FACTORS = ['p_15', 'p_20', 'p_21', 'p_16', 'p_17', 'p_18', 'p_14', 'p_19', 'p_22', 'p_13'];
-    const COMMON_RISK_FACTORS = ['p_8', 'p_9', 'p_10', 'p_28'];
 
     this.api = new InfermedicaApi(
       config.API_URL,
@@ -25,6 +25,8 @@ class DemoApp extends App {
       config.API_APP,
       config.API_KEY
     );
+
+    this.patient = new Patient();
 
     this.currentStep = 0;
 
@@ -34,42 +36,51 @@ class DemoApp extends App {
         view: 'welcome'
       },
       {
-        context: null,
+        context: {
+          patient: this.patient
+        },
         view: 'basic'
       },
       {
         context: {
-          symptoms: COMMON_SYMPTOMS,
-          api: this.api
+          api: this.api,
+          patient: this.patient
         },
         view: 'symptoms'
       },
       {
         context: {
-          api: this.api
+          api: this.api,
+          patient: this.patient
         },
         view: 'other-symptoms'
       },
       {
         context: {
-          locationRiskFactors: LOCATION_RISK_FACTORS,
-          api: this.api
+          api: this.api,
+          patient: this.patient
         },
         view: 'geo-risks'
       },
       {
         context: {
-          commonRiskFactors: COMMON_RISK_FACTORS,
-          api: this.api
+          api: this.api,
+          patient: this.patient
         },
         view: 'common-risks'
       },
       {
-        context: null,
+        context: {
+          api: this.api,
+          patient: this.patient
+        },
         view: 'question'
       },
       {
-        context: null,
+        context: {
+          api: this.api,
+          patient: this.patient
+        },
         view: 'summary'
       }
     ];

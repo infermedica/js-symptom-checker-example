@@ -7,10 +7,14 @@ import template from './template';
 
 export default class SymptomsView extends View {
   constructor (el, context) {
-    let handleSymptomsChange = (e) => {
-      console.log('symptoms changed');
-      console.log(this);
-      console.log(e.target.value);
+    context.symptoms = ['s_21', 's_1190', 's_98', 's_119', 's_88', 's_13', 's_156', 's_285', 's_241'];
+
+    const handleSymptomsChange = (e) => {
+      let group = {};
+      this.el.querySelectorAll('.input-symptom').forEach((item) => {
+        group[item.id] = item.checked;
+      });
+      this.context.patient.addSymptomsGroup(group);
     };
 
     const binds = {

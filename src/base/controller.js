@@ -33,6 +33,9 @@ export default class Controller {
 
   setView (name, context) {
     let ViewClass = this.viewMapper[name];
+    if (ViewClass === QuestionView) {
+      document.getElementById('next-step').setAttribute('disabled', 'true');
+    }
     this.view = new ViewClass(this.el, context);
     this.render();
   }
