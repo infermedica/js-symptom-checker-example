@@ -7,7 +7,7 @@ import template from './template';
 
 export default class CommonRisksView extends View {
   constructor (el, context) {
-    context.commonRiskFactors = ['p_8', 'p_9', 'p_10', 'p_28'];
+    context.commonRiskFactors = ['p_8', 'p_9', 'p_10', 'p_28', 'p_47'];
 
     const handleRisksChange = (e) => {
       let group = {};

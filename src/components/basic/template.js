@@ -5,7 +5,7 @@
 let template = (context) => {
   return new Promise((resolve) => {
     resolve(`
-        <h4 class="card-title">Please select your sex and age.</h4>
+        <h5 class="card-title">Please select your sex and age.</h5>
         <div class="card-text">
         <form>
           <div class="form-group row">

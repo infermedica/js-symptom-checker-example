@@ -80,7 +80,7 @@ let template = (context) => {
     }
 
     resolve(`
-      <h4 class="card-title">${context.question.text}</h4>
+      <h5 class="card-title">${context.question.text}</h5>
       <div class="card-text">
         ${mapper[context.question.type](context.question.items)}
         ${nextButton}

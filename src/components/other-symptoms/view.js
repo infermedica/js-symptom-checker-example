@@ -31,7 +31,7 @@ export default class OtherSymptomsView extends View {
     console.log(this.observations);
     let t = '';
     for (let o of observations) {
-      t += `<li>${o.name}</li>`;
+      t += `<li>${o.name} - ${o.choice_id}</li>`;
     }
     this.el.querySelector('#observations').innerHTML = t;
   }
@@ -41,7 +41,8 @@ export default class OtherSymptomsView extends View {
       return;
     }
     const pairs = this.observations.map((item) => {
-      return [item.id, true];
+      let val = item.choice_id === 'present';
+      return [item.id, val];
     });
     const o = _.fromPairs(pairs);
     this.context.patient.addSymptomsGroup(o);

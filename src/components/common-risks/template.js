@@ -23,7 +23,7 @@ let template = (context) => {
         }
       }
       resolve(`
-          <h4 class="card-title">Please check all that apply to you.</h4>
+          <h5 class="card-title">Please check all that apply to you.</h5>
           <div class="card-text">
             <form>
               ${checkboxes}

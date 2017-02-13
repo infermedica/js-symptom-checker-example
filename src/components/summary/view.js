@@ -22,13 +22,13 @@ export default class SummaryView extends View {
       let base = `
         <div class="row">
           <div class="col-6">
-            <span class="badge badge-success">Supporting evidences</span>
+            <span class="badge badge-success">Evidences for</span>
             <ul class="list-unstyled">
               ${supporting}
             </ul>
           </div>
           <div class="col-6">
-            <span class="badge badge-danger">Conflicting evidences</span>
+            <span class="badge badge-danger">Evidences against</span>
             <ul class="list-unstyled">
               ${conflicting}
             </ul>
@@ -42,6 +42,7 @@ export default class SummaryView extends View {
       let el = e.target.parentNode.parentNode.querySelector('.explanation');
 
       if (!el.innerHTML) {
+        el.innerHTML = 'One second...';
         context.api.explain(Object.assign(context.patient.toDiagnosis(), {target: id})).then((data) => {
           console.log(data);
           el.innerHTML = getExplanationMarkup(data);

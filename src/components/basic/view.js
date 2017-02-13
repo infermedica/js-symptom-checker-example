@@ -27,6 +27,6 @@ export default class BasicView extends View {
     };
 
     super(el, template, context, binds);
-    // this.context.patient.reset();
+    this.context.patient.reset();
   }
 }

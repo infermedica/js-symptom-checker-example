@@ -29,7 +29,7 @@ let template = (context) => {
       }
 
       resolve(`
-        <h4 class="card-title">Summary</h4>
+        <h5 class="card-title">Summary</h5>
         <div class="card-text">
           <p>Basing on the interview, you could suffer from:</p>
           ${conditions}
