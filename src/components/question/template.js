@@ -5,7 +5,7 @@
 import html from '../../templates/helpers';
 
 const answersGroupSingle = (items) => {
-  return `
+  return html`
     <form>
       <fieldset class="form-group">
         ${items.map(i => {
@@ -46,7 +46,7 @@ const answersGroupMultiple = (items) => {
 };
 
 const answersSingle = () => {
-  return `
+  return html`
     <div>
       <button type="button" data-value="true" class="next-question btn btn-success">Yes</button>
       <button type="button" data-value="false" class="next-question btn btn-danger">No</button>

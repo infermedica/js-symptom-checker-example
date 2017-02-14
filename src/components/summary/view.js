@@ -22,13 +22,13 @@ export default class SummaryView extends View {
       let base = `
         <div class="row">
           <div class="col-6">
-            <span class="badge badge-success"><i class="fa fa-fw fa-thumbs-up"></i>Evidences for</span>
+            <span class="badge badge-success"><i class="fa fa-fw fa-thumbs-up"></i>Evidence for</span>
             <ul class="list-unstyled">
               ${supporting}
             </ul>
           </div>
           <div class="col-6">
-            <span class="badge badge-danger"><i class="fa fa-fw fa-thumbs-down"></i>Evidences against</span>
+            <span class="badge badge-danger"><i class="fa fa-fw fa-thumbs-down"></i>Evidence against</span>
             <ul class="list-unstyled">
               ${conflicting}
             </ul>
@@ -46,7 +46,6 @@ export default class SummaryView extends View {
       if (!el.innerHTML) {
         el.innerHTML = '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i> one second..';
         context.api.explain(Object.assign(context.patient.toDiagnosis(), {target: id})).then((data) => {
-          console.log(data);
           el.innerHTML = getExplanationMarkup(data);
         });
       } else {
