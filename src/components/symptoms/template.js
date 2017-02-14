@@ -24,7 +24,7 @@ let template = (context) => {
       }
       resolve(`
           <h5 class="card-title">Please check all symptoms that seem to apply to you.</h5>
-          <p class="text-muted small">Unchecked ones will be considered as absent</p>
+          <p class="text-muted small"><i class="fa fa-info-circle"></i> Unchecked ones will be considered as absent</p>
           <div class="card-text">
             <form>
               ${checkboxes}

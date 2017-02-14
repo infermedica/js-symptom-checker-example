@@ -31,7 +31,8 @@ export default class OtherSymptomsView extends View {
     console.log(this.observations);
     let t = '';
     for (let o of observations) {
-      t += `<li>${o.name} - ${o.choice_id}</li>`;
+      let icon = (o.choice_id === 'present') ? '<i class="text-success fa fa-fw fa-plus-circle"></i>' : '<i class="text-danger fa fa-fw fa-minus-circle"></i>';
+      t += `<li>${icon} ${o.name}</li>`;
     }
     this.el.querySelector('#observations').innerHTML = t;
   }

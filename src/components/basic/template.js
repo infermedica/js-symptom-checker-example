@@ -11,15 +11,25 @@ let template = (context) => {
           <div class="form-group row">
             <label for="input-sex" class="col-sm-2 col-form-label">Sex</label>
             <div class="col-sm-10">
-              <select class="custom-select form-control mb-2 mr-sm-2 mb-sm-0" id="input-sex">
-                <option selected value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
+              <!--<select class="custom-select form-control mb-2 mr-sm-2 mb-sm-0" id="input-sex">-->
+                <!--<option selected value="male">Male</option>-->
+                <!--<option value="female">Female</option>-->
+              <!--</select>-->
+<div class="form-check form-check-inline">
+<label class="form-check-label">
+<input class="input-sex form-check-input" checked type="radio" name="inlineRadioOptions" value="male"><i class="fa fa-fw fa-male"></i> male
+</label>
+</div>
+<div class="form-check form-check-inline">
+<label class="form-check-label">
+<input class="input-sex form-check-input" type="radio" name="inlineRadioOptions" value="female"><i class="fa fa-fw fa-female"></i> female
+</label>
+</div>
             </div>
           </div>
           <div class="form-group row">
             <label for="input-age" class="col-sm-2 col-form-label">Age</label>
-            <div class="col-sm-10">
+            <div class="col-sm-2">
               <input type="number" class="form-control" id="input-age" value="30">
             </div>
           </div>

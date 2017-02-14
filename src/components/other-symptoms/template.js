@@ -13,10 +13,10 @@ let template = (context) => {
               <textarea placeholder="e.g. I got headache" class="form-control" id="input-feel" rows="4"></textarea>
             </div>
           </form>
-          <p>Identified observations :</p>
+          <p>Identified observations:</p>
           <ul class="list-unstyled" id="observations">
           </ul>
-          <p class="text-muted small">All of the identified observations will be added to your interview after clicking <span class="badge badge-primary">Next</span>.</p>
+          <p class="text-muted small"><i class="fa fa-info-circle"></i> All of the identified observations will be added to your interview after clicking <span class="badge badge-primary">Next</span>.</p>
         </div>
       `);
   });

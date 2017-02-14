@@ -16,7 +16,7 @@ export default class BasicView extends View {
     };
 
     const binds = {
-      '#input-sex': {
+      '.input-sex': {
         type: 'change',
         listener: handleSexChange
       },

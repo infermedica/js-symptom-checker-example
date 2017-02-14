@@ -46,7 +46,7 @@ export default class QuestionView extends View {
   }
 
   render () {
-    this.el.innerHTML = '<p>I am thinking...</p>';
+    this.el.innerHTML = '<p><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> I am thinking...</p>';
     this.context.api.diagnosis(this.context.patient.toDiagnosis()).then((data) => {
       this.context.question = data.question;
       let bestProb = _.get(data, 'conditions[0].probability');

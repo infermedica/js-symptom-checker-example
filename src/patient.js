@@ -12,29 +12,24 @@ export default class Patient {
   }
 
   setSex (s) {
-    console.log('Patient::setSex', s);
     this.sex = s;
   }
 
   setAge (a) {
-    console.log('Patient::setAge', a);
     this.age = a;
   }
 
   addSymptomsGroup (g) {
-    console.log('Patient::addSymptomsGroup', g);
     Object.assign(this.symptoms, g);
-    console.log(this.symptoms);
   }
 
   toDiagnosis () {
-    console.log('Patient::toDiagnosis');
     let res = {
       sex: this.sex,
       age: this.age,
       evidence: []
     };
-
+    // TODO: check this
     res.evidence = _.map(this.symptoms, (v, k) => {
       const choice = (c) => {
         if (c === true) {

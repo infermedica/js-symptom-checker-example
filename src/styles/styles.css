@@ -1,13 +1,12 @@
-@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
 body {
-    padding-top: 15px;
+    padding: 15px 0 15px;
+}
+
+
+button {
+    cursor: pointer;
 }
 
 #step-container {
     min-height: 470px;
-}
-
-button {
-    cursor: pointer;
 }

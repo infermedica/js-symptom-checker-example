@@ -3,18 +3,18 @@
  */
 
 export default class InfermedicaApi {
-  constructor (apiUrl, apiModel, appId, appKey) {
-    console.log('InfermedicaApi::constructor');
-    this.apiUrl = apiUrl;
-    this.apiModel = apiModel;
+  constructor (appId, appKey, apiModel = 'infermedica-en', apiUrl = 'https://api.infermedica.com/v2/') {
     this.appId = appId;
     this.appKey = appKey;
+
+    this.apiUrl = apiUrl;
+    this.apiModel = apiModel;
   }
 
   _req (method, url, data) {
     return new Promise((resolve, reject) => {
       /* global XMLHttpRequest */
-      let req = new XMLHttpRequest();
+      const req = new XMLHttpRequest();
 
       req.open(method, this.apiUrl + url, true);
       req.setRequestHeader('App-Id', this.appId);
@@ -70,5 +70,4 @@ export default class InfermedicaApi {
     console.log('InfermedicaApi::explain');
     return this._post('explain', JSON.stringify(data)).then(JSON.parse);
   }
-
 }

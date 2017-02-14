@@ -2,28 +2,26 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 03/02/2017.
  */
 
-// eslint-disable-next-line no-unused-vars
-import s from './styles/styles.css';
+require('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+require('../node_modules/font-awesome/css/font-awesome.min.css');
+
+require('./styles/styles.css');
+
 import config from './config.js';
 import template from './templates/base';
 
-import InfermedicaApi from './infermedica-api';
 import App from './base/app';
-import Controller from './base/controller';
-
+import DemoController from './controller';
+import InfermedicaApi from './infermedica-api';
 import Patient from './patient';
 
-// TODO: subclass controller
-
-class DemoApp extends App {
+export default class DemoApp extends App {
   constructor (el) {
     super(el, template);
 
     this.api = new InfermedicaApi(
-      config.API_URL,
-      config.API_MODEL,
-      config.API_APP,
-      config.API_KEY
+      config.API_APP_ID,
+      config.API_APP_KEY
     );
 
     this.patient = new Patient();
@@ -88,12 +86,13 @@ class DemoApp extends App {
 
   render () {
     super.render();
+    // TODO: implement afterRender and beforeRender
     this.nextButton = this.el.querySelector('#next-step');
     this.nextButton.addEventListener('click', e => this.nextStep(e));
   }
 
   startInterview () {
-    this.controller = new Controller(this.el.querySelector('#step-container'));
+    this.controller = new DemoController(this.el.querySelector('#step-container'));
 
     const currentView = this.views[this.currentStep];
     this.controller.setView(currentView.view, currentView.context);
@@ -101,12 +100,11 @@ class DemoApp extends App {
 
   nextStep () {
     this.currentStep += 1;
-    this.currentStep = this.currentStep % 8;
+    this.currentStep %= 8;
 
     const currentView = this.views[this.currentStep];
+
     this.controller.destroyView();
     this.controller.setView(currentView.view, currentView.context);
   }
 }
-
-export default DemoApp;
