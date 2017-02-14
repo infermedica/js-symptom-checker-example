@@ -27,4 +27,11 @@ export default class DemoController extends Controller {
       'summary': SummaryView
     };
   }
+
+  _beforeSetView (name) {
+    let ViewClass = this.viewMapper[name];
+    if (ViewClass === QuestionView) {
+      document.getElementById('next-step').setAttribute('disabled', 'true');
+    }
+  }
 }

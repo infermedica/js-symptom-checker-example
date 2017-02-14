@@ -2,62 +2,52 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 08/02/2017.
  */
 
-let getRadio = (id, label) => {
-  return `
-    <div class="form-check">
-      <label class="custom-control custom-radio form-check-label">
-        <input id="${id}" type="radio" class="custom-control-input" name="radio">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">
-        ${label}
-      </label>
-    </div>
-  `;
-};
+import html from '../../templates/helpers';
 
-let getCheckbox = (id, label) => {
-  return `
-    <div class="form-group">
-      <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-        <input id="${id}" type="checkbox" class="custom-control-input">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">${label}</span>
-      </label>
-    </div>
-  `;
-};
-
-let answersGroupSingle = (items) => {
-  let radios = '';
-  for (let i of items) {
-    radios += getRadio(i.id, i.name);
-  }
+const answersGroupSingle = (items) => {
   return `
     <form>
       <fieldset class="form-group">
-        ${radios}
+        ${items.map(i => {
+          return html`
+            <div class="form-check">
+              <label class="custom-control custom-radio form-check-label">
+                <input id="${i.id}" type="radio" class="custom-control-input" name="radio">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">
+                ${i.name}
+              </label>
+            </div>         
+          `;
+        })}
       </fieldset>
     </form>
   `;
 };
 
-let answersGroupMultiple = (items) => {
-  let checkboxes = '';
-  for (let i of items) {
-    checkboxes += getCheckbox(i.id, i.name);
-  }
-  return `
+const answersGroupMultiple = (items) => {
+  return html`
     <form>
       <fieldset class="form-group">
-        ${checkboxes}
+        ${items.map(i => {
+          return html`
+            <div class="form-group">
+              <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                <input id="${i.id}" type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">${i.name}</span>
+              </label>
+            </div>          
+          `;
+        })}
       </fieldset>
     </form>
   `;
 };
 
-let answersSingle = (items) => {
+const answersSingle = () => {
   return `
-    <div class="btn-group" role="group">
+    <div>
       <button type="button" data-value="true" class="next-question btn btn-success">Yes</button>
       <button type="button" data-value="false" class="next-question btn btn-danger">No</button>
       <button type="button" data-value="unknown" class="next-question btn btn-info">Skip question</button>
@@ -65,25 +55,19 @@ let answersSingle = (items) => {
   `;
 };
 
-let template = (context) => {
+const template = (context) => {
   return new Promise((resolve) => {
     const mapper = {
       'group_single': answersGroupSingle,
       'group_multiple': answersGroupMultiple,
       'single': answersSingle
     };
-
-    let nextButton = '';
-
-    if (context.question.type !== 'single') {
-      nextButton = '<button class="next-question btn btn-secondary">Next question</button>';
-    }
-
-    resolve(`
+    resolve(html`
       <h5 class="card-title">${context.question.text}</h5>
       <div class="card-text">
         ${mapper[context.question.type](context.question.items)}
-        ${nextButton}
+        ${context.question.type !== 'single'
+          ? `<button class="next-question btn btn-primary">Next question </button>` : ``}
       </div>
     `);
   });

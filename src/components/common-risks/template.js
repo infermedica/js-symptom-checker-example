@@ -2,31 +2,28 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 08/02/2017.
  */
 
-let template = (context) => {
-  return new Promise((resolve) => {
-    let checkbox = (label, id) => {
-      return `
-          <div class="form-group">
-            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-              <input id="${id}" type="checkbox" class="input-risk custom-control-input">
-              <span class="custom-control-indicator"></span>
-              <span class="custom-control-description">${label}</span>
-            </label>
-          </div>`;
-    };
-    let checkboxes = '';
+import html from '../../templates/helpers';
 
+const template = (context) => {
+  return new Promise((resolve) => {
     context.api.getRiskFactors().then((risks) => {
-      for (const r of risks) {
-        if (context.commonRiskFactors.indexOf(r.id) >= 0) {
-          checkboxes += checkbox(r.name, r.id);
-        }
-      }
-      resolve(`
+      resolve(html`
           <h5 class="card-title">Please check all that apply to you.</h5>
           <div class="card-text">
             <form>
-              ${checkboxes}
+              ${risks.map(risk => {
+                if (context.commonRiskFactors.indexOf(risk.id) >= 0) {
+                  return html`
+                    <div class="form-group">
+                      <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                        <input id="${risk.id}" type="checkbox" class="input-risk custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">${risk.name}</span>
+                      </label>
+                    </div>
+                  `;
+                }
+              })}
             </form>
           </div>
         `);

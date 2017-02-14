@@ -10,14 +10,12 @@ import _ from 'lodash';
 export default class QuestionView extends View {
   constructor (el, context) {
     const handleNextQuestion = (e) => {
-      console.log('next question req');
       let group = {};
       if (this.context.question.type !== 'single') {
         this.el.querySelectorAll('.custom-control-input').forEach((item) => {
           group[item.id] = item.checked;
         });
         this.context.patient.addSymptomsGroup(group);
-        // TODO: unbind?
         this.destroy();
         this.render();
       } else {
@@ -28,7 +26,6 @@ export default class QuestionView extends View {
           'unknown:': undefined
         };
         this.context.patient.addSymptomsGroup({[this.context.question.items[0].id]: val[e.target.dataset.value]});
-        // TODO: unbind?
         this.destroy();
         this.render();
       }

@@ -29,7 +29,6 @@ export default class Patient {
       age: this.age,
       evidence: []
     };
-    // TODO: check this
     res.evidence = _.map(this.symptoms, (v, k) => {
       const choice = (c) => {
         if (c === true) {
@@ -47,7 +46,6 @@ export default class Patient {
         choice_id: choice(v)
       };
     });
-
     return res;
   }
 

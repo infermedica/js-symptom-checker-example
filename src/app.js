@@ -84,9 +84,7 @@ export default class DemoApp extends App {
     ];
   }
 
-  render () {
-    super.render();
-    // TODO: implement afterRender and beforeRender
+  _afterRender () {
     this.nextButton = this.el.querySelector('#next-step');
     this.nextButton.addEventListener('click', e => this.nextStep(e));
   }

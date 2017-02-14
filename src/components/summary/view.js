@@ -37,7 +37,9 @@ export default class SummaryView extends View {
        `;
       return base;
     };
+
     const handleExplainRequested = (e) => {
+      e.preventDefault();
       let id = e.target.dataset.id;
       let el = e.target.parentNode.parentNode.querySelector('.explanation');
 

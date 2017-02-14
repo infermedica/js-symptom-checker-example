@@ -2,7 +2,7 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 03/02/2017.
  */
 
-let template = `
+const template = `
   <div class="card">
       <div class="card-header">
           <i class="fa fa-fw fa-user-md"></i> Symptom Checker Example <span class="float-right text-muted">powered by <a href="http://infermedica.com/">Infermedica</a></span>

@@ -9,6 +9,11 @@ export default class App {
   }
   render () {
     this.el.innerHTML = this.template;
+    this._afterRender();
+  }
+
+  _afterRender () {
+    // intentionally left blank
   }
 }
 

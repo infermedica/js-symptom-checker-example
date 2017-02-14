@@ -47,27 +47,22 @@ export default class InfermedicaApi {
   }
 
   getSymptoms () {
-    console.log('InfermedicaApi::getSymptoms');
     return this._get('symptoms').then(JSON.parse);
   }
 
   getRiskFactors () {
-    console.log('InfermedicaApi::getRiskFactors');
     return this._get('risk_factors').then(JSON.parse);
   }
 
   parse (text) {
-    console.log('InfermedicaApi::parse');
     return this._post('parse', JSON.stringify({'text': text})).then(JSON.parse);
   }
 
   diagnosis (data) {
-    console.log('InfermedicaApi::diagnosis');
     return this._post('diagnosis', JSON.stringify(data)).then(JSON.parse);
   }
 
   explain (data) {
-    console.log('InfermedicaApi::explain');
     return this._post('explain', JSON.stringify(data)).then(JSON.parse);
   }
 }
