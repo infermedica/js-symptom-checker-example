@@ -22,6 +22,9 @@ Next steps assume that you have installed all dependencies.
 
 ## Getting started
 
+First of all you have to obtain your own app-id and app-key from [developer portal.](https://developer.infermedica.com/)
+You will need to paste these into right fields inside the application.
+
 ### Installing further dependencies with yarn
 
 Please go to the root directory and type

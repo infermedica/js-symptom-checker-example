@@ -11,6 +11,14 @@ export default class InfermedicaApi {
     this.apiModel = apiModel;
   }
 
+  setAppId (appId) {
+    this.appId = appId;
+  }
+
+  setAppKey (appKey) {
+    this.appKey = appKey;
+  }
+
   _req (method, url, data) {
     return new Promise((resolve, reject) => {
       /* global XMLHttpRequest */
