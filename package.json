@@ -1,10 +1,8 @@
 {
-  "name": "simple-symptom-checker",
+  "name": "js-symptom-checker-example",
   "version": "1.0.0",
-  "description": "TBD",
-  "main": "TBD",
-  "repository": "git@bitbucket.org:infermedica/simple-symptom-checker.git",
-  "author": "Infermedica",
+  "repository": "https://github.com/infermedica/js-symptom-checker-example",
+  "author": "Infermedica Sp. z o.o.",
   "license": "MIT",
   "scripts": {
     "lint": "eslint src/**/*.js webpack.config.js",
