@@ -5,7 +5,7 @@ This is an example of a web-based symptom checker written in pure ES6 (without u
 We created it to help you work with the Infermedica API, and show you how to implement such applications on your own.
 This application resembles a basic interview with a doctor and provides you with information about most likely conditions.
 
-The most recent Infermedica API documentation is always available on our [developer portal.](https://developer.infermedica.com/)
+The most recent Infermedica API documentation is always available on our [developer portal](https://developer.infermedica.com/).
 
 Do not hesitate to contact us if you need any further help.
 
@@ -41,9 +41,8 @@ Please go to the root directory and type
 ## Plans for the future
 
 * we plan to extract `infermedica-api.js` from this example and release it as standalone ES6 module
-* it may be worth to use JSX templates
 
-Do you have any ideas? Create [an issue](https://github.com/infermedica/js-symptom-checker-example/issues/new) and let us know!.
+Do you have any ideas? Create [an issue](https://github.com/infermedica/js-symptom-checker-example/issues/new) and let us know!
  
 ## License
 
