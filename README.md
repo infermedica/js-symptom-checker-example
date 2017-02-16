@@ -1,11 +1,11 @@
 # Symptom Checker Example
 
-This is an example symptom checker written in pure ES6 (without using any frameworks).
+This is an example of a web-based symptom checker written in pure ES6 (without using any frameworks). It uses Artificial Intelligence API provided by Infermedica as an engine for symptom analysis.
 
-We created it to help you work with our API, and show you how to implement such application on your own.
-This application mimics doctor's interview and gives you a diagnosis basing on our mathematical model.
+We created it to help you work with the Infermedica API, and show you how to implement such applications on your own.
+This application resembles a basic interview with a doctor and provides you with information about most likely conditions.
 
-The most recent API documentation is always available on our [developer portal.](https://developer.infermedica.com/)
+The most recent Infermedica API documentation is always available on our [developer portal.](https://developer.infermedica.com/)
 
 Do not hesitate to contact us if you need any further help.
 
