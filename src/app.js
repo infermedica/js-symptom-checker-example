@@ -7,6 +7,8 @@ require('../node_modules/font-awesome/css/font-awesome.min.css');
 
 require('./styles/styles.css');
 
+import settings from './settings';
+
 import template from './templates/base';
 
 import App from './base/app';
@@ -18,7 +20,7 @@ export default class DemoApp extends App {
   constructor (el) {
     super(el, template);
 
-    this.api = new InfermedicaApi('', '');
+    this.api = new InfermedicaApi(settings['app-id'], settings['app-key']);
 
     this.patient = new Patient();
 

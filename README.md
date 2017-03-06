@@ -30,6 +30,20 @@ You will need to paste these into right fields inside the application.
 Please go to the root directory and type
 `yarn install`.
 
+### Providing api credentials
+
+You have to provide your own credentials in order to use API. To do so, 
+please register at [infermedica's developer portal](https://developer.infermedica.com) to get keys, then edit file `src/settings.js`.
+```javascript
+const settings = {
+  'app-id': 'your-id-here',
+  'app-key': 'your-key-here'
+};
+
+export default settings;
+```
+
+
 ### Running the app in development mode
 
 `yarn dev`
