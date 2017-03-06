@@ -10,11 +10,3 @@ window.addEventListener('load', () => {
   app.render();
   app.startInterview();
 });
-
-document.getElementById('input-app-id').addEventListener('change', e => {
-  app.api.setAppId(e.target.value);
-});
-
-document.getElementById('input-app-key').addEventListener('change', e => {
-  app.api.setAppKey(e.target.value);
-});
