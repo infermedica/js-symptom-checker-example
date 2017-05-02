@@ -13,7 +13,6 @@ export default class InfermedicaApi {
 
   _req (method, url, data) {
     return new Promise((resolve, reject) => {
-      /* global XMLHttpRequest */
       const req = new XMLHttpRequest();
 
       req.open(method, this.apiUrl + url, true);
