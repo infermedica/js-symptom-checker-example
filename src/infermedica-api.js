@@ -12,28 +12,20 @@ export default class InfermedicaApi {
   }
 
   _req (method, url, data) {
-    return new Promise((resolve, reject) => {
-      const req = new XMLHttpRequest();
+    let headers = new Headers();
+    headers.append('app-id', this.appId);
+    headers.append('app-key', this.appKey);
+    headers.append('model', this.apiModel);
+    headers.append('content-type', 'application/json');
 
-      req.open(method, this.apiUrl + url, true);
-      req.setRequestHeader('App-Id', this.appId);
-      req.setRequestHeader('App-Key', this.appKey);
-      req.setRequestHeader('Model', this.apiModel);
-      req.setRequestHeader('Content-Type', 'application/json');
-
-      req.onload = () => {
-        if (req.status === 200) {
-          resolve(req.response);
-        } else {
-          reject(new Error(req.statusText));
-        }
-      };
-
-      req.onerror = () => {
-        reject(new Error('Network error'));
-      };
-
-      req.send(data);
+    return fetch(this.apiUrl + url, {
+      method,
+      headers,
+      body: data
+    }).then((response) => {
+      return response.json();
+    }).then((json) => {
+      return json;
     });
   }
 
@@ -46,22 +38,22 @@ export default class InfermedicaApi {
   }
 
   getSymptoms () {
-    return this._get('symptoms').then(JSON.parse);
+    return this._get('symptoms');
   }
 
   getRiskFactors () {
-    return this._get('risk_factors').then(JSON.parse);
+    return this._get('risk_factors');
   }
 
   parse (text) {
-    return this._post('parse', JSON.stringify({'text': text})).then(JSON.parse);
+    return this._post('parse', JSON.stringify({'text': text}));
   }
 
   diagnosis (data) {
-    return this._post('diagnosis', JSON.stringify(data)).then(JSON.parse);
+    return this._post('diagnosis', JSON.stringify(data));
   }
 
   explain (data) {
-    return this._post('explain', JSON.stringify(data)).then(JSON.parse);
+    return this._post('explain', JSON.stringify(data));
   }
 }
