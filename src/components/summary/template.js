@@ -20,7 +20,7 @@ const template = (context) => {
               </div>
               <div class="col-4">
                 <div class="progress">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: ${Math.round(condition.probability * 100 * 100) / 100}%">${Math.round(condition.probability * 100 * 100) / 100}%</div>
+                  <div class="progress-bar bg-info" role="progressbar" style="width: ${Math.floor(condition.probability * 100)}%">${Math.floor(condition.probability * 100)}%</div>
                 </div>
               </div>
               <div class="explanation col-12"></div>
