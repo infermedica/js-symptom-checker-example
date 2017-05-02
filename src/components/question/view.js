@@ -19,7 +19,6 @@ export default class QuestionView extends View {
         this.destroy();
         this.render();
       } else {
-        // type = single
         const val = {
           'false': false,
           'true': true,

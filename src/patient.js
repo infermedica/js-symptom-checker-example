@@ -11,16 +11,16 @@ export default class Patient {
     this.age = 30;
   }
 
-  setSex (s) {
-    this.sex = s;
+  setSex (sex) {
+    this.sex = sex;
   }
 
-  setAge (a) {
-    this.age = a;
+  setAge (age) {
+    this.age = age;
   }
 
-  addSymptomsGroup (g) {
-    Object.assign(this.symptoms, g);
+  addSymptomsGroup (group) {
+    Object.assign(this.symptoms, group);
   }
 
   toDiagnosis () {

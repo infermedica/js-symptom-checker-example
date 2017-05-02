@@ -3,7 +3,7 @@
  */
 
 function htmlEscape (str) {
-  return str.replace(/&/g, '&amp;') // first!
+  return str.replace(/&/g, '&amp;')
     .replace(/>/g, '&gt;')
     .replace(/</g, '&lt;')
     .replace(/"/g, '&quot;')
@@ -25,6 +25,7 @@ export default function html (literalSections, ...substs) {
       subst = htmlEscape(subst);
       lit = lit.slice(0, -1);
     }
+
     result += lit;
     result += subst;
   });
