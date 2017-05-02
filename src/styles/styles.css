@@ -2,11 +2,19 @@ body {
     padding: 15px 0 15px;
 }
 
-
 button {
     cursor: pointer;
 }
 
 #step-container {
     min-height: 470px;
+}
+
+.progress-bar {
+    height: 27px;
+    padding-top: 6px;
+}
+
+.summary-item {
+    margin-bottom: 10px;
 }

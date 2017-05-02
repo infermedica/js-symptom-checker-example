@@ -12,7 +12,7 @@ const template = (context) => {
         <div class="card-text">
           <p>Basing on the interview, you could suffer from:</p>
           ${data.conditions.map(condition => `
-            <div style="margin-bottom: 10px;" class="row">
+            <div class="summary-item row">
               <div class="col-8">
                 ${condition.name}
                 ${condition.probability >= 0.2
@@ -20,7 +20,7 @@ const template = (context) => {
               </div>
               <div class="col-4">
                 <div class="progress">
-                  <div class="progress-bar bg-info" role="progressbar" style="padding-top: 6px; height: 27px; width: ${Math.round(condition.probability * 100 * 100) / 100}%">${Math.round(condition.probability * 100 * 100) / 100}%</div>
+                  <div class="progress-bar bg-info" role="progressbar" style="width: ${Math.round(condition.probability * 100 * 100) / 100}%">${Math.round(condition.probability * 100 * 100) / 100}%</div>
                 </div>
               </div>
               <div class="explanation col-12"></div>
