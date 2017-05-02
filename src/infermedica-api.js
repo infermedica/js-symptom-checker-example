@@ -24,8 +24,6 @@ export default class InfermedicaApi {
       body: data
     }).then((response) => {
       return response.json();
-    }).then((json) => {
-      return json;
     });
   }
 
