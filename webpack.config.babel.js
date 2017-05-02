@@ -2,9 +2,7 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 02/02/2017.
  */
 
-
 import path from 'path';
-
 
 module.exports = {
   context: __dirname,
