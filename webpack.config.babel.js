@@ -2,7 +2,9 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 02/02/2017.
  */
 
-const path = require('path');
+
+import path from 'path';
+
 
 module.exports = {
   context: __dirname,
