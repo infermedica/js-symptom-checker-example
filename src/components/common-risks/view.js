@@ -7,7 +7,11 @@ import template from './template';
 
 export default class CommonRisksView extends View {
   constructor (el, context) {
-    context.commonRiskFactors = ['p_8', 'p_9', 'p_10', 'p_28', 'p_47'];
+    context.commonRiskFactors = ['p_7', 'p_28', 'p_10', 'p_9', 'p_147', 'p_8'];
+
+    if (context.patient.sex === 'female' && context.patient.age > 39) {
+      context.commonRiskFactors.push('p_11');
+    }
 
     const handleRisksChange = (e) => {
       let group = {};
