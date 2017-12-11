@@ -1,13 +1,10 @@
-body {
-    padding: 15px 0 15px;
+.main-container {
+    padding: 0;
 }
 
-button {
-    cursor: pointer;
-}
-
-#step-container {
-    min-height: 470px;
+.card {
+    border-radius: 0;
+    border: none;
 }
 
 .progress-bar {
@@ -17,4 +14,30 @@ button {
 
 .summary-item {
     margin-bottom: 10px;
+}
+
+#step-container {
+    min-height: 470px;
+    padding: 12px 20px;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+@media (min-width: 576px) {
+    body {
+        padding-top: 15px;
+    }
+
+    .main-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .card {
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+    }
 }
