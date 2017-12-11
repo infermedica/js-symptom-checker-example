@@ -42,13 +42,6 @@ export default class DemoApp extends App {
           api: this.api,
           patient: this.patient
         },
-        view: 'symptoms'
-      },
-      {
-        context: {
-          api: this.api,
-          patient: this.patient
-        },
         view: 'other-symptoms'
       },
       {
@@ -56,14 +49,15 @@ export default class DemoApp extends App {
           api: this.api,
           patient: this.patient
         },
-        view: 'geo-risks'
+        view: 'common-risks'
       },
+      // insert suggest-screen here
       {
         context: {
           api: this.api,
           patient: this.patient
         },
-        view: 'common-risks'
+        view: 'geo-risks'
       },
       {
         context: {
