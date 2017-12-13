@@ -13,7 +13,7 @@ export default class QuestionView extends View {
       let group = {};
       if (this.context.question.type !== 'single') {
         this.el.querySelectorAll('.custom-control-input').forEach((item) => {
-          group[item.id] = item.checked;
+          group[item.id] = {reported: item.checked};
         });
         this.context.patient.addSymptomsGroup(group);
         this.destroy();
@@ -24,7 +24,7 @@ export default class QuestionView extends View {
           'true': true,
           'unknown:': undefined
         };
-        this.context.patient.addSymptomsGroup({[this.context.question.items[0].id]: val[e.target.dataset.value]});
+        this.context.patient.addSymptomsGroup({[this.context.question.items[0].id]: {reported: val[e.target.dataset.value]}});
         this.destroy();
         this.render();
       }
