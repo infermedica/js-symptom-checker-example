@@ -47,6 +47,10 @@ export default class InfermedicaApi {
     return this._post('parse', JSON.stringify({'text': text}));
   }
 
+  getSuggestedSymptoms (data) {
+    return this._post('suggest', JSON.stringify(data));
+  }
+
   diagnosis (data) {
     return this._post('diagnosis', JSON.stringify(data));
   }

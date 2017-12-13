@@ -16,7 +16,7 @@ export default class CommonRisksView extends View {
     const handleRisksChange = (e) => {
       let group = {};
       this.el.querySelectorAll('.input-risk').forEach((item) => {
-        group[item.id] = item.checked;
+        group[item.id] = {reported: item.checked};
       });
       this.context.patient.addSymptomsGroup(group);
     };

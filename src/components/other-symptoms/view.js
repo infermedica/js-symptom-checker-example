@@ -46,7 +46,7 @@ export default class OtherSymptomsView extends View {
     }
     const pairs = this.observations.map((item) => {
       let val = item.choice_id === 'present';
-      return [item.id, val];
+      return [item.id, {reported: val}];
     });
     const o = _.fromPairs(pairs);
     this.context.patient.addSymptomsGroup(o);

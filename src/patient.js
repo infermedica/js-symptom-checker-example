@@ -23,6 +23,10 @@ export default class Patient {
     Object.assign(this.symptoms, group);
   }
 
+  removeSymptom (id) {
+    delete this.symptoms[id];
+  }
+
   toDiagnosis () {
     let res = {
       sex: this.sex,
@@ -43,10 +47,20 @@ export default class Patient {
       };
       return {
         id: k,
-        choice_id: choice(v)
+        choice_id: choice(v.reported)
       };
     });
     return res;
+  }
+
+  toSuggest () {
+    return {
+      sex: this.sex,
+      age: this.age,
+      selected: _.filter(_.keys(this.symptoms), (key) => {
+        return this.symptoms[key].reported === true;
+      })
+    };
   }
 
   reset () {

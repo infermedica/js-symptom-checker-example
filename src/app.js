@@ -51,7 +51,13 @@ export default class DemoApp extends App {
         },
         view: 'common-risks'
       },
-      // insert suggest-screen here
+      {
+        context: {
+          api: this.api,
+          patient: this.patient
+        },
+        view: 'suggest'
+      },
       {
         context: {
           api: this.api,

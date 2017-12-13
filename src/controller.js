@@ -6,7 +6,7 @@ import Controller from './base/controller';
 
 import WelcomeView from './components/welcome/view';
 import BasicView from './components/basic/view';
-import SymptomsView from './components/symptoms/view';
+import SuggestView from './components/suggest/view';
 import OtherSymptomsView from './components/other-symptoms/view';
 import GeoRisksView from './components/geo-risks/view';
 import CommonRisksView from './components/common-risks/view';
@@ -19,7 +19,7 @@ export default class DemoController extends Controller {
     this.viewMapper = {
       'welcome': WelcomeView,
       'basic': BasicView,
-      'symptoms': SymptomsView,
+      'suggest': SuggestView,
       'other-symptoms': OtherSymptomsView,
       'geo-risks': GeoRisksView,
       'common-risks': CommonRisksView,
