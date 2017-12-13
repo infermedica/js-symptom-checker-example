@@ -9,6 +9,18 @@ export default class InfermedicaApi {
 
     this.apiUrl = apiUrl;
     this.apiModel = apiModel;
+
+    this.interviewId = null;
+  }
+
+  generateInterviewId () {
+    let uuidv4 = function () {
+      return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      );
+    };
+
+    this.interviewId = uuidv4();
   }
 
   _req (method, url, data) {
@@ -17,6 +29,10 @@ export default class InfermedicaApi {
     headers.append('app-key', this.appKey);
     headers.append('model', this.apiModel);
     headers.append('content-type', 'application/json');
+
+    if (this.interviewId) {
+      headers.append('interview-id', this.interviewId);
+    }
 
     return fetch(this.apiUrl + url, {
       method,

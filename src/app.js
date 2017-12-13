@@ -28,7 +28,9 @@ export default class DemoApp extends App {
 
     this.views = [
       {
-        context: null,
+        context: {
+          api: this.api
+        },
         view: 'welcome'
       },
       {
