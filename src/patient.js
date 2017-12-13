@@ -45,10 +45,25 @@ export default class Patient {
           return 'absent';
         }
       };
-      return {
+
+      let e = {
         id: k,
         choice_id: choice(v.reported)
       };
+
+      if (v.initial) {
+        Object.assign(e, {
+          initial: true
+        });
+      }
+
+      if (v.related) {
+        Object.assign(e, {
+          related: true
+        });
+      }
+
+      return e;
     });
     return res;
   }
