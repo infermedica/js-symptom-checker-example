@@ -14,7 +14,6 @@ export default class SuggestView extends View {
       this.el.querySelectorAll('.input-symptom').forEach((item) => {
         // we do not mark any symptoms that comes from suggest as absent
         if (item.checked) {
-          console.log('adding ', item.id);
           group[item.id] = {reported: true, related: true};
         } else {
           // completely remove this symptom
@@ -23,7 +22,6 @@ export default class SuggestView extends View {
       });
 
       this.context.patient.addSymptomsGroup(group);
-      console.log(this.context.patient.toDiagnosis());
     };
 
     const binds = {
