@@ -7,6 +7,10 @@ import html from '../../templates/helpers';
 const template = (context) => {
   return new Promise((resolve) => {
     context.api.getSuggestedSymptoms(context.data).then((suggestedSymptoms) => {
+      if (!suggestedSymptoms.length) {
+        resolve('<p><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> I am thinking...</p>');
+        document.getElementById('next-step').click();
+      }
       resolve(html`
           <h5 class="card-title">Do you have any of the following symptoms?</h5>
           <div class="card-text">
