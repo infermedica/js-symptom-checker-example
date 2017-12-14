@@ -18,7 +18,7 @@ const template = (context) => {
         <p>Identified observations:</p>
         <ul class="list-unstyled" id="observations">
         </ul>
-        <p class="text-muted small"><i class="fa fa-info-circle"></i> This screen uses our NLP engine to find symptoms in a written text. All of the identified symptoms will be added to your interview after clicking <span class="badge badge-primary">Next</span>.</p>
+        <p class="text-muted small"><i class="fa fa-info-circle"></i> This screen uses our NLP engine to find symptoms in a written text. Evidences found in text will be marked as initial which is important to our engine. Please read more about initial evidences <a target="_blank">here</a>. All of the identified symptoms will be added to your interview after clicking <span class="badge badge-primary">Next</span>.</p>
       </div>
     `);
   });
