@@ -44,7 +44,7 @@ export default class DemoApp extends App {
           api: this.api,
           patient: this.patient
         },
-        view: 'other-symptoms'
+        view: 'nlp'
       },
       {
         context: {
