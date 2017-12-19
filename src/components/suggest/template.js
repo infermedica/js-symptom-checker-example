@@ -3,6 +3,7 @@
  */
 
 import html from '../../templates/helpers';
+import _ from 'lodash';
 
 const template = (context) => {
   return new Promise((resolve) => {
@@ -15,7 +16,7 @@ const template = (context) => {
           <h5 class="card-title">Do you have any of the following symptoms?</h5>
           <div class="card-text">
             <form>
-              ${suggestedSymptoms.map(symptom => {
+              ${_.take(suggestedSymptoms, 5).map(symptom => {
                 return html`
                   <div class="form-group">
                     <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
@@ -27,7 +28,7 @@ const template = (context) => {
                 `;
               })}
             </form>
-            <p class="text-muted small"><i class="fa fa-info-circle"></i> This is a list of symptoms suggested by our AI, basing on the information gathered so far during the interview.</p>
+            <p class="text-muted small"><i class="fa fa-info-circle"></i> This is a list of symptoms suggested by our AI, based on the information gathered so far during the interview.</p>
           </div>
         `);
     });

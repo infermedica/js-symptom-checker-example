@@ -10,7 +10,7 @@ const template = (context) => {
       resolve(html`
         <h5 class="card-title">Summary</h5>
         <div class="card-text">
-          <p>Basing on the interview, you could suffer from:</p>
+          <p>Based on the interview, you could suffer from:</p>
           ${data.conditions.map(condition => `
             <div class="summary-item row">
               <div class="col-8">
@@ -27,7 +27,7 @@ const template = (context) => {
             </div>          
           `)}
           <div class="alert alert-warning" role="alert">
-            <i class="fa fa-info-circle"></i> This list may not be complete. Only a licensed medical provider can diagnose and treat illnesses.
+            <i class="fa fa-info-circle"></i> Please note that the list below may not be complete and is provided solely for informational purposes and is not a qualified medical opinion.
           </div>
         </div>
       `);
