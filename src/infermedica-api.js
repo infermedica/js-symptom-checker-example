@@ -25,13 +25,13 @@ export default class InfermedicaApi {
 
   _req (method, url, data) {
     let headers = new Headers();
-    headers.append('app-id', this.appId);
-    headers.append('app-key', this.appKey);
-    headers.append('model', this.apiModel);
-    headers.append('content-type', 'application/json');
+    headers.append('App-Id', this.appId);
+    headers.append('App-Key', this.appKey);
+    headers.append('Model', this.apiModel);
+    headers.append('Content-Type', 'application/json');
 
     if (this.interviewId) {
-      headers.append('interview-id', this.interviewId);
+      headers.append('Interview-Id', this.interviewId);
     }
 
     return fetch(this.apiUrl + url, {
