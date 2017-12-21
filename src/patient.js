@@ -33,37 +33,38 @@ export default class Patient {
       age: this.age,
       evidence: []
     };
-    res.evidence = _.map(this.symptoms, (v, k) => {
-      const choice = (c) => {
-        if (c === true) {
+
+    res.evidence = _.map(this.symptoms, (symptom, symptomId) => {
+      const getChoiceId = (choice) => {
+        if (choice === true) {
           return 'present';
         }
-        if (_.isUndefined(c)) {
+        if (_.isUndefined(choice)) {
           return 'unknown';
         }
-        if (c === false) {
+        if (choice === false) {
           return 'absent';
         }
       };
 
-      let e = {
-        id: k,
-        choice_id: choice(v.reported)
+      let diagnosisSymptom = {
+        id: symptomId,
+        choice_id: getChoiceId(symptom.reported)
       };
 
-      if (v.initial) {
-        Object.assign(e, {
+      if (symptom.initial) {
+        Object.assign(diagnosisSymptom, {
           initial: true
         });
       }
 
-      if (v.related) {
-        Object.assign(e, {
+      if (symptom.related) {
+        Object.assign(diagnosisSymptom, {
           related: true
         });
       }
 
-      return e;
+      return diagnosisSymptom;
     });
     return res;
   }
