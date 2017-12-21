@@ -7,7 +7,7 @@ import _ from 'lodash';
 import View from '../../base/view';
 import template from './template';
 
-export default class OtherSymptomsView extends View {
+export default class NLPView extends View {
   constructor (el, context) {
     const handleFeelChange = (e) => {
       this.context.api.parse(e.target.value).then((response) => {
@@ -45,7 +45,15 @@ export default class OtherSymptomsView extends View {
       return;
     }
     const pairs = this.observations.map((item) => {
-      let val = item.choice_id === 'present';
+      let val = {
+        reported: item.choice_id === 'present'
+      };
+
+      if (val.reported) {
+        Object.assign(val, {
+          initial: true
+        });
+      }
       return [item.id, val];
     });
     const o = _.fromPairs(pairs);

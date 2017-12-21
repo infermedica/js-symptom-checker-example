@@ -25,6 +25,7 @@ const template = (context) => {
                 }
               })}
             </form>
+            <p class="text-muted small"><i class="fa fa-info-circle"></i> Above you see the most common risk factors. Although /diagnosis may return questions about risk factors, when implementing a symptom checker we recommend asking the patient about common risk factors before the actual interview begins. This helps to steer the interview in the right direction and to reduce its length. Please read more about risk factors <a target="_blank" href="https://developer.infermedica.com/docs/diagnosis#common-risk-factors">here</a>.</p>
           </div>
         `);
     });

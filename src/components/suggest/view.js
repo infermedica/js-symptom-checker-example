@@ -5,15 +5,22 @@
 import View from '../../base/view';
 import template from './template';
 
-export default class SymptomsView extends View {
+export default class SuggestView extends View {
   constructor (el, context) {
-    context.symptoms = ['s_21', 's_1190', 's_98', 's_119', 's_88', 's_13', 's_156', 's_285', 's_241'];
+    context.data = context.patient.toSuggest();
 
     const handleSymptomsChange = (e) => {
       let group = {};
       this.el.querySelectorAll('.input-symptom').forEach((item) => {
-        group[item.id] = item.checked;
+        // we do not mark any symptoms that comes from suggest as absent
+        if (item.checked) {
+          group[item.id] = {reported: true, related: true};
+        } else {
+          // completely remove this symptom
+          this.context.patient.removeSymptom(item.id);
+        }
       });
+
       this.context.patient.addSymptomsGroup(group);
     };
 

@@ -9,40 +9,37 @@ export default class InfermedicaApi {
 
     this.apiUrl = apiUrl;
     this.apiModel = apiModel;
+
+    this.interviewId = null;
   }
 
-  setAppId (appId) {
-    this.appId = appId;
-  }
+  generateInterviewId () {
+    let uuidv4 = function () {
+      return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      );
+    };
 
-  setAppKey (appKey) {
-    this.appKey = appKey;
+    this.interviewId = uuidv4();
   }
 
   _req (method, url, data) {
-    return new Promise((resolve, reject) => {
-      /* global XMLHttpRequest */
-      const req = new XMLHttpRequest();
+    let headers = new Headers();
+    headers.append('App-Id', this.appId);
+    headers.append('App-Key', this.appKey);
+    headers.append('Model', this.apiModel);
+    headers.append('Content-Type', 'application/json');
 
-      req.open(method, this.apiUrl + url, true);
-      req.setRequestHeader('App-Id', this.appId);
-      req.setRequestHeader('App-Key', this.appKey);
-      req.setRequestHeader('Model', this.apiModel);
-      req.setRequestHeader('Content-Type', 'application/json');
+    if (this.interviewId) {
+      headers.append('Interview-Id', this.interviewId);
+    }
 
-      req.onload = () => {
-        if (req.status === 200) {
-          resolve(req.response);
-        } else {
-          reject(new Error(req.statusText));
-        }
-      };
-
-      req.onerror = () => {
-        reject(new Error('Network error'));
-      };
-
-      req.send(data);
+    return fetch(this.apiUrl + url, {
+      method,
+      headers,
+      body: data
+    }).then((response) => {
+      return response.json();
     });
   }
 
@@ -55,22 +52,26 @@ export default class InfermedicaApi {
   }
 
   getSymptoms () {
-    return this._get('symptoms').then(JSON.parse);
+    return this._get('symptoms');
   }
 
   getRiskFactors () {
-    return this._get('risk_factors').then(JSON.parse);
+    return this._get('risk_factors');
   }
 
   parse (text) {
-    return this._post('parse', JSON.stringify({'text': text})).then(JSON.parse);
+    return this._post('parse', JSON.stringify({'text': text}));
+  }
+
+  getSuggestedSymptoms (data) {
+    return this._post('suggest', JSON.stringify(data));
   }
 
   diagnosis (data) {
-    return this._post('diagnosis', JSON.stringify(data)).then(JSON.parse);
+    return this._post('diagnosis', JSON.stringify(data));
   }
 
   explain (data) {
-    return this._post('explain', JSON.stringify(data)).then(JSON.parse);
+    return this._post('explain', JSON.stringify(data));
   }
 }

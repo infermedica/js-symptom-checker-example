@@ -7,6 +7,7 @@ export default class App {
     this.el = el;
     this.template = template;
   }
+
   render () {
     this.el.innerHTML = this.template;
     this._afterRender();
@@ -16,4 +17,3 @@ export default class App {
     // intentionally left blank
   }
 }
-

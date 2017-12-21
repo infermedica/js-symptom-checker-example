@@ -10,9 +10,9 @@ const template = (context) => {
       resolve(html`
         <h5 class="card-title">Summary</h5>
         <div class="card-text">
-          <p>Basing on the interview, you could suffer from:</p>
+          <p>Based on the interview, you could suffer from:</p>
           ${data.conditions.map(condition => `
-            <div style="margin-bottom: 10px;" class="row">
+            <div class="summary-item row">
               <div class="col-8">
                 ${condition.name}
                 ${condition.probability >= 0.2
@@ -20,14 +20,14 @@ const template = (context) => {
               </div>
               <div class="col-4">
                 <div class="progress">
-                  <div class="progress-bar bg-info" role="progressbar" style="padding-top: 6px; height: 27px; width: ${Math.round(condition.probability * 100 * 100) / 100}%">${Math.round(condition.probability * 100 * 100) / 100}%</div>
+                  <div class="progress-bar bg-info" role="progressbar" style="width: ${Math.floor(condition.probability * 100)}%">${Math.floor(condition.probability * 100)}%</div>
                 </div>
               </div>
               <div class="explanation col-12"></div>
             </div>          
           `)}
           <div class="alert alert-warning" role="alert">
-            <i class="fa fa-info-circle"></i> This list may not be complete. Only a licensed medical provider can diagnose and treat illnesses.
+            <i class="fa fa-info-circle"></i> Please note that the list below may not be complete and is provided solely for informational purposes and is not a qualified medical opinion.
           </div>
         </div>
       `);

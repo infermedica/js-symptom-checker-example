@@ -11,16 +11,20 @@ export default class Patient {
     this.age = 30;
   }
 
-  setSex (s) {
-    this.sex = s;
+  setSex (sex) {
+    this.sex = sex;
   }
 
-  setAge (a) {
-    this.age = a;
+  setAge (age) {
+    this.age = age;
   }
 
-  addSymptomsGroup (g) {
-    Object.assign(this.symptoms, g);
+  addSymptomsGroup (group) {
+    Object.assign(this.symptoms, group);
+  }
+
+  removeSymptom (id) {
+    delete this.symptoms[id];
   }
 
   toDiagnosis () {
@@ -29,24 +33,50 @@ export default class Patient {
       age: this.age,
       evidence: []
     };
-    res.evidence = _.map(this.symptoms, (v, k) => {
-      const choice = (c) => {
-        if (c === true) {
+
+    res.evidence = _.map(this.symptoms, (symptom, symptomId) => {
+      const getChoiceId = (choice) => {
+        if (choice === true) {
           return 'present';
         }
-        if (_.isUndefined(c)) {
+        if (_.isUndefined(choice)) {
           return 'unknown';
         }
-        if (c === false) {
+        if (choice === false) {
           return 'absent';
         }
       };
-      return {
-        id: k,
-        choice_id: choice(v)
+
+      let diagnosisSymptom = {
+        id: symptomId,
+        choice_id: getChoiceId(symptom.reported)
       };
+
+      if (symptom.initial) {
+        Object.assign(diagnosisSymptom, {
+          initial: true
+        });
+      }
+
+      if (symptom.related) {
+        Object.assign(diagnosisSymptom, {
+          related: true
+        });
+      }
+
+      return diagnosisSymptom;
     });
     return res;
+  }
+
+  toSuggest () {
+    return {
+      sex: this.sex,
+      age: this.age,
+      selected: _.filter(_.keys(this.symptoms), (key) => {
+        return this.symptoms[key].reported === true;
+      })
+    };
   }
 
   reset () {

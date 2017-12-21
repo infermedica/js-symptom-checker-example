@@ -7,6 +7,8 @@ require('../node_modules/font-awesome/css/font-awesome.min.css');
 
 require('./styles/styles.css');
 
+import settings from './settings';
+
 import template from './templates/base';
 
 import App from './base/app';
@@ -18,7 +20,7 @@ export default class DemoApp extends App {
   constructor (el) {
     super(el, template);
 
-    this.api = new InfermedicaApi('', '');
+    this.api = new InfermedicaApi(settings['app-id'], settings['app-key']);
 
     this.patient = new Patient();
 
@@ -26,7 +28,9 @@ export default class DemoApp extends App {
 
     this.views = [
       {
-        context: null,
+        context: {
+          api: this.api
+        },
         view: 'welcome'
       },
       {
@@ -40,21 +44,7 @@ export default class DemoApp extends App {
           api: this.api,
           patient: this.patient
         },
-        view: 'symptoms'
-      },
-      {
-        context: {
-          api: this.api,
-          patient: this.patient
-        },
-        view: 'other-symptoms'
-      },
-      {
-        context: {
-          api: this.api,
-          patient: this.patient
-        },
-        view: 'geo-risks'
+        view: 'nlp'
       },
       {
         context: {
@@ -62,6 +52,20 @@ export default class DemoApp extends App {
           patient: this.patient
         },
         view: 'common-risks'
+      },
+      {
+        context: {
+          api: this.api,
+          patient: this.patient
+        },
+        view: 'suggest'
+      },
+      {
+        context: {
+          api: this.api,
+          patient: this.patient
+        },
+        view: 'geo-risks'
       },
       {
         context: {

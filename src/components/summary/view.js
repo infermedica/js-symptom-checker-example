@@ -12,11 +12,11 @@ export default class SummaryView extends View {
       let conflicting = '';
 
       for (let e of data.supporting_evidence) {
-        supporting += `<li><i class="text-success fa fa-fw fa-plus-circle"></i> ${e.name}</li>`;
+        supporting += `<li><i class="text-success fa fa-fw fa-plus-circle"></i> ${e.common_name}</li>`;
       }
 
       for (let e of data.conflicting_evidence) {
-        conflicting += `<li><i class="text-danger fa fa-fw fa-minus-circle"></i> ${e.name}</li>`;
+        conflicting += `<li><i class="text-danger fa fa-fw fa-minus-circle"></i> ${e.common_name}</li>`;
       }
 
       let base = `

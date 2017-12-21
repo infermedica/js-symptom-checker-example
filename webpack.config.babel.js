@@ -2,7 +2,7 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 02/02/2017.
  */
 
-const path = require('path');
+import path from 'path';
 
 module.exports = {
   context: __dirname,
@@ -15,7 +15,7 @@ module.exports = {
   devServer: {
     publicPath: '/public/',
     inline: true,
-    host: '0.0.0.0'
+    host: '127.0.0.1'
   },
   resolve: {
     extensions: ['.js', '.json']
