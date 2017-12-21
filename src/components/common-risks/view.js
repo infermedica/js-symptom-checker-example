@@ -7,8 +7,10 @@ import template from './template';
 
 export default class CommonRisksView extends View {
   constructor (el, context) {
+    // ids of common risk factors like hypertension or diabetes
     context.commonRiskFactors = ['p_7', 'p_28', 'p_10', 'p_9', 'p_147', 'p_8'];
 
+    // p_11 is postmenopause - we show this factor only for women after 39 yo
     if (context.patient.sex === 'female' && context.patient.age > 39) {
       context.commonRiskFactors.push('p_11');
     }
