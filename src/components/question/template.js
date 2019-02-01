@@ -9,15 +9,11 @@ const answersGroupSingle = (items) => {
     <form>
       <fieldset class="form-group">
         ${items.map(i => {
-          return html`
-            <div class="form-check">
-              <label class="custom-control custom-radio form-check-label">
-                <input id="${i.id}" type="radio" class="custom-control-input" name="radio">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">
-                ${i.name}
-              </label>
-            </div>         
+          return html`              
+            <div class="custom-control custom-radio">
+              <input type="radio" id="${i.id}" name="radio" class="custom-control-input">
+              <label class="custom-control-label" for="${i.id}">${i.name}</label>
+            </div>
           `;
         })}
       </fieldset>
@@ -31,13 +27,10 @@ const answersGroupMultiple = (items) => {
       <fieldset class="form-group">
         ${items.map(i => {
           return html`
-            <div class="form-group">
-              <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                <input id="${i.id}" type="checkbox" class="custom-control-input">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">${i.name}</span>
-              </label>
-            </div>          
+            <div class="custom-control custom-checkbox">
+              <input id="${i.id}" type="checkbox" class="custom-control-input">
+              <label for="${i.id}" class="custom-control-label custom-checkbox mb-2 mr-sm-2 mb-sm-0">${i.name}</label>
+            </div>     
           `;
         })}
       </fieldset>

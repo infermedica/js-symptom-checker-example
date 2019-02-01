@@ -14,12 +14,9 @@ const template = (context) => {
               ${risks.map(risk => {
                 if (context.commonRiskFactors.indexOf(risk.id) >= 0) {
                   return html`
-                    <div class="form-group">
-                      <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                        <input id="${risk.id}" type="checkbox" class="input-risk custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">${risk.name}</span>
-                      </label>
+                    <div class="custom-control custom-checkbox">
+                      <input id="${risk.id}" type="checkbox" class="input-risk custom-control-input">
+                      <label for="${risk.id}" class="custom-control-label custom-checkbox mb-2 mr-sm-2 mb-sm-0">${risk.name}</label>
                     </div>
                   `;
                 }

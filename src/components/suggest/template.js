@@ -18,12 +18,9 @@ const template = (context) => {
             <form>
               ${_.take(suggestedSymptoms, 5).map(symptom => {
                 return html`
-                  <div class="form-group">
-                    <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                      <input id="${symptom.id}" type="checkbox" class="input-symptom custom-control-input">
-                      <span class="custom-control-indicator"></span>
-                      <span class="custom-control-description">${symptom.name}</span>
-                    </label>
+                  <div class="custom-control custom-checkbox">
+                    <input id="${symptom.id}" type="checkbox" class="input-symptom custom-control-input">
+                    <label for="${symptom.id}" class="custom-control-label custom-checkbox mb-2 mr-sm-2 mb-sm-0">${symptom.name}</label>
                   </div>
                 `;
               })}
