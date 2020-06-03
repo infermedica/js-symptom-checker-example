@@ -10,9 +10,12 @@ import template from './template';
 export default class NLPView extends View {
   constructor (el, context) {
     const handleFeelChange = (e) => {
-      this.context.api.parse(e.target.value).then((response) => {
-        this.updateObservations(response.mentions);
-      });
+      const feel = e.target.value;
+      if (feel) {
+        this.context.api.parse(e.target.value).then((response) => {
+          this.updateObservations(response.mentions);
+        });
+      }
     };
 
     const binds = {
