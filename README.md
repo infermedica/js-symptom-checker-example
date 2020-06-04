@@ -18,17 +18,10 @@ This project uses `yarn` as dependency manager. Please make sure that you have `
 
 `# npm install -g yarn`
 
-Next steps assume that you have installed all dependencies. 
-
 ## Getting started
 
 First of all you have to obtain your own app-id and app-key from [developer portal.](https://developer.infermedica.com/)
 You will need to paste these into right fields inside the application.
-
-### Installing further dependencies with yarn
-
-Please go to the root directory and type
-`yarn install`.
 
 ### Providing api credentials
 
@@ -43,6 +36,10 @@ const settings = {
 export default settings;
 ```
 
+### Installing further dependencies with yarn
+
+Please go to the root directory and type
+`yarn install`.
 
 ### Running the app in development mode
 
