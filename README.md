@@ -20,13 +20,7 @@ This project uses `yarn` as dependency manager. Please make sure that you have `
 
 ## Getting started
 
-First of all you have to obtain your own app-id and app-key from [developer portal.](https://developer.infermedica.com/)
-You will need to paste these into right fields inside the application.
-
-### Providing api credentials
-
-You have to provide your own credentials in order to use API. To do so, 
-please register at [infermedica's developer portal](https://developer.infermedica.com) to get keys, then edit file `src/settings.js`.
+First of all you have to obtain your own app-id and app-key in order to use API. To do so, please register at [infermedica's developer portal](https://developer.infermedica.com) to get necessary credentials, then edit file `src/settings.js`.
 ```javascript
 const settings = {
   'app-id': 'your-id-here',
