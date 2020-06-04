@@ -48,12 +48,6 @@ Please go to the root directory and type
 ### Preparing a production-ready build
 
 `yarn build`
-
-## Plans for the future
-
-* we plan to extract `infermedica-api.js` from this example and release it as standalone ES6 module
-
-Do you have any ideas? Create [an issue](https://github.com/infermedica/js-symptom-checker-example/issues/new) and let us know!
  
 ## License
 
