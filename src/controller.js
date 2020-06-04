@@ -30,7 +30,7 @@ export default class DemoController extends Controller {
 
   _beforeSetView (name) {
     let ViewClass = this.viewMapper[name];
-    if (ViewClass === QuestionView) {
+    if ([QuestionView, NLPView].includes(ViewClass)) {
       document.getElementById('next-step').setAttribute('disabled', 'true');
     }
   }

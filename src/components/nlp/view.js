@@ -41,6 +41,16 @@ export default class NLPView extends View {
       `;
     }
     this.el.querySelector('#observations').innerHTML = t;
+    this.checkObservations();
+  }
+
+  checkObservations () {
+    const present = (element) => element.choice_id === 'present';
+    if (this.observations.some(present)) {
+      document.getElementById('next-step').removeAttribute('disabled');
+    } else {
+      document.getElementById('next-step').setAttribute('disabled', 'true');
+    }
   }
 
   saveObservations () {
