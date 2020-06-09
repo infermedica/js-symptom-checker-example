@@ -2,7 +2,7 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 02/02/2017.
  */
 
-import path from 'path';
+const path = require('path');
 
 module.exports = {
   context: __dirname,
@@ -37,8 +37,8 @@ module.exports = {
         loader: 'babel-loader',
         include: path.resolve(__dirname, 'src'),
         query: {
-          plugins: ['transform-runtime'],
-          presets: ['es2015']
+          plugins: ['@babel/transform-runtime'],
+          presets: ['@babel/preset-env']
         }
       }, {
         test: /\.css$/,

@@ -8,12 +8,12 @@ import View from '../../base/view';
 import template from './template';
 
 export default class NLPView extends View {
-  constructor (el, context) {
+  constructor(el, context) {
     const handleFeelChange = (e) => {
       const feel = e.target.value;
       if (feel) {
-        this.context.api.parse(e.target.value).then((response) => {
-          this.updateObservations(response.mentions);
+        this.context.api.parse(feel).then((response) => {
+          return this.updateObservations(response.mentions);
         });
       }
     };
@@ -29,13 +29,14 @@ export default class NLPView extends View {
     this.observations = {};
   }
 
-  updateObservations (observations) {
+  updateObservations(observations) {
     this.observations = observations;
     let t = '';
-    for (let o of observations) {
+    for (const o of observations) {
       t += `
         <li>
-          <i class="text-${o.choice_id === 'present' ? 'success' : 'danger'} fa fa-fw fa-${o.choice_id === 'present' ? 'plus' : 'minus'}-circle"></i>
+          <i class="text-${o.choice_id === 'present' ? 'success' : 'danger'} 
+            fa fa-fw fa-${o.choice_id === 'present' ? 'plus' : 'minus'}-circle"></i>
           ${o.name}
         </li>
       `;
@@ -44,7 +45,7 @@ export default class NLPView extends View {
     this.checkObservations();
   }
 
-  checkObservations () {
+  checkObservations() {
     const present = (element) => element.choice_id === 'present';
     if (this.observations.some(present)) {
       document.getElementById('next-step').removeAttribute('disabled');
@@ -53,12 +54,12 @@ export default class NLPView extends View {
     }
   }
 
-  saveObservations () {
+  saveObservations() {
     if (_.isEmpty(this.observations)) {
       return;
     }
     const pairs = this.observations.map((item) => {
-      let val = {
+      const val = {
         reported: item.choice_id === 'present'
       };
 
@@ -73,7 +74,7 @@ export default class NLPView extends View {
     this.context.patient.addSymptomsGroup(o);
   }
 
-  destroy () {
+  destroy() {
     this.saveObservations();
     super.destroy();
   }

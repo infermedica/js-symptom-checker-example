@@ -6,7 +6,7 @@ import View from '../../base/view';
 import template from './template';
 
 export default class BasicView extends View {
-  constructor (el, context) {
+  constructor(el, context) {
     const handleSexChange = (e) => {
       this.context.patient.setSex(e.target.value);
     };

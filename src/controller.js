@@ -14,22 +14,22 @@ import QuestionView from './components/question/view';
 import SummaryView from './components/summary/view';
 
 export default class DemoController extends Controller {
-  constructor (el) {
+  constructor(el) {
     super(el);
     this.viewMapper = {
-      'welcome': WelcomeView,
-      'basic': BasicView,
-      'suggest': SuggestView,
-      'nlp': NLPView,
+      welcome: WelcomeView,
+      basic: BasicView,
+      suggest: SuggestView,
+      nlp: NLPView,
       'geo-risks': GeoRisksView,
       'common-risks': CommonRisksView,
-      'question': QuestionView,
-      'summary': SummaryView
+      question: QuestionView,
+      summary: SummaryView
     };
   }
 
-  _beforeSetView (name) {
-    let ViewClass = this.viewMapper[name];
+  beforeSetView(name) {
+    const ViewClass = this.viewMapper[name];
     if ([QuestionView, NLPView].includes(ViewClass)) {
       document.getElementById('next-step').setAttribute('disabled', 'true');
     }

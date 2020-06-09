@@ -6,7 +6,7 @@ import View from '../../base/view';
 import template from './template';
 
 export default class CommonRisksView extends View {
-  constructor (el, context) {
+  constructor(el, context) {
     // ids of common risk factors like hypertension or diabetes
     context.commonRiskFactors = ['p_7', 'p_28', 'p_10', 'p_9', 'p_147', 'p_8'];
 
@@ -16,7 +16,7 @@ export default class CommonRisksView extends View {
     }
 
     const handleRisksChange = (e) => {
-      let group = {};
+      const group = {};
       this.el.querySelectorAll('.input-risk').forEach((item) => {
         group[item.id] = {reported: item.checked};
       });
