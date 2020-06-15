@@ -5,14 +5,34 @@
 import View from '../../base/view';
 import template from './template';
 
+function addPostmenopause(riskFactors) {
+  riskFactors.push('p_11');
+}
+
+function addPregnancy(riskFactors) {
+  riskFactors.push('p_42');
+}
+
+function addDiabetes(riskFactors) {
+  riskFactors.push('p_8');
+}
+
 export default class CommonRisksView extends View {
   constructor(el, context) {
-    // ids of common risk factors like hypertension or diabetes
-    context.commonRiskFactors = ['p_7', 'p_28', 'p_10', 'p_9', 'p_147', 'p_8'];
+    const {age} = context.patient;
+    // ids of common risk factors like hypertension or high cholesterol
+    context.commonRiskFactors = ['p_7', 'p_28', 'p_10', 'p_9', 'p_264'];
 
-    // p_11 is postmenopause - we show this factor only for women after 39 yo
-    if (context.patient.sex === 'female' && context.patient.age > 39) {
-      context.commonRiskFactors.push('p_11');
+    if (context.patient.sex === 'female') {
+      if (age > 45) {
+        addPostmenopause(context.commonRiskFactors);
+      } else if (age >= 15) {
+        addPregnancy(context.commonRiskFactors);
+      }
+    }
+
+    if (age > 49) {
+      addDiabetes(context.commonRiskFactors);
     }
 
     const handleRisksChange = (e) => {
