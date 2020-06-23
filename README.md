@@ -1,22 +1,22 @@
-# Starting guide: building a symptom checking application with JavaScript ES6
+# SETUP: Building a symptom-checking application with JavaScript ES6
 
-Are you looking for a base solution to set up your symptom checking application with JavaScript? See how you can do it with Infermedica API.
+Are you looking for a base solution to set up your symptom-checking application with JavaScript? See how to do it with Infermedica API.
 
-In this example, we present a web-based symptom checker written in pure JavaScript ES6 (without using any frameworks) and all essential information that you might need while working with Infermedica API and JavaScript ES6. We hope that the presented example will be a good starting point and inspiration for the further development of your application.
+In this example, we present a web-based symptom checker written in pure JavaScript ES6 (without using any frameworks) and all essential information that you might need while working with Infermedica API and JavaScript ES6. The example is a good starting point and inspiration for the further development of your application.
 
-The example presented in this project is merely a tutorial. It's not intended to be a production-ready solution.
+This example is a tutorial and is not intended to be a production-ready solution.
 
-For more inspiration, best practices, and examples, please go to [Infermedica API documentation](https://developer.infermedica.com/docs/introduction).
+For more inspiration, best practices and examples, please go to [Infermedica API documentation](https://developer.infermedica.com/docs/introduction).
 
 ## Applications based on Infermedica API
 
-Infermedica API enables you to develop a prediagnosis application that resembles a basic interview with a doctor and provides you with information about the most probable symptoms and conditions.
+Infermedica API enables you to develop a triage and prediagnosis application that resembles a basic interview with a doctor and provides you with information on the most probable symptoms and conditions.
 
 It uses Artificial Intelligence API provided by [Infermedica](https://infermedica.com) as an engine for symptom analysis.
 
 The most recent Infermedica API documentation is always available on our [Developer Portal](https://developer.infermedica.com/).
 
-Do not hesitate to [contact us](support@infermedica.com) if you need any further help.
+Do not hesitate to [contact us](support@infermedica.com) if you need assistance.
 
 > Are you interested in this solution but lacking the developers' team who could ensure the highest quality of implementation process? Check out [Symptom Checker](https://infermedica.com/product/symptom-checker) developed by Infermedica and see how we can support you in its implementation. [Contact us](https://infermedica.com/contact) ➡️
 
@@ -34,14 +34,14 @@ const settings = {
 export default settings;
 ```
 
-⚠️  Please do not present API credentials in public places.
+⚠️  Please do not display/use API credentials in public places/open WIFI.
 
 ### Dependencies
 
-Before you start working with Infermedica API and JS ES6, please make sure that you have `node` installed in your system.
+Before you start working with Infermedica API and JS ES6, please ensure that you have `node` installed in your system.
 Please refer to the docs to find out the most suitable way depending on your OS.
 
-This project uses `yarn` as a dependency manager. Please make sure that you have `yarn` installed before going to the next step.
+This project uses `yarn` as a dependency manager. Ensure that you have `yarn` installed before going to the next step.
 
 `# npm install -g yarn`
 
@@ -64,12 +64,13 @@ You will be able to use our API with this app.
 
 ## Future improvements
 
-Do you have any ideas on how we can make this exemplary symptom checker better? Create [an issue](https://github.com/infermedica/js-symptom-checker-example/issues/new) and let us know!
+Do you have any ideas on what you’d like to see in our symptom checker? Create [an issue](https://github.com/infermedica/js-symptom-checker-example/issues/new) and let us know!
 
 ## Disclaimer
 
-The solution presented above is just an example of working with Infermedica API and JavaScript ES6, and should not be treated as a production-ready solution. If you are looking for a white-labeled solution for symptom checking, please check out [Symptom Checker](https://infermedica.com/product/symptom-checker) developed by Infermedica.
+The solution presented above is just an example of applications using Infermedica API and JavaScript ES6 and is not a production-ready solution. If you are looking for a white-labeled solution for symptom checking, please check out [Symptom Checker](https://infermedica.com/product/symptom-checker) developed by Infermedica.
 
  ## License
 
-Presented symptom checking application is available on [MIT license](./LICENSE).
+This application is available on [MIT license](./LICENSE).
+
