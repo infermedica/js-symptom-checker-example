@@ -34,11 +34,11 @@ const settings = {
 export default settings;
 ```
 
-⚠️  Please do not display/use API credentials in public places/open WIFI.
+⚠️  Please keep your API credentials in a secret place.
 
 ### Dependencies
 
-Before you start working with Infermedica API and JS ES6, please ensure that you have `node` installed in your system.
+Before you start working with this example, please ensure that you have `node` installed in your system.
 Please refer to the docs to find out the most suitable way depending on your OS.
 
 This project uses `yarn` as a dependency manager. Ensure that you have `yarn` installed before going to the next step.
