@@ -2,11 +2,6 @@
  * Created by Tomasz Gabrysiak @ Infermedica on 03/02/2017.
  */
 
-require('../node_modules/bootstrap/dist/css/bootstrap.min.css');
-require('../node_modules/font-awesome/css/font-awesome.min.css');
-
-require('./styles/styles.css');
-
 import settings from './settings';
 
 import template from './templates/base';
@@ -16,8 +11,13 @@ import DemoController from './controller';
 import InfermedicaApi from './infermedica-api';
 import Patient from './patient';
 
+require('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+require('../node_modules/font-awesome/css/font-awesome.min.css');
+
+require('./styles/styles.css');
+
 export default class DemoApp extends App {
-  constructor (el) {
+  constructor(el) {
     super(el, template);
 
     this.api = new InfermedicaApi(settings['app-id'], settings['app-key']);
@@ -84,19 +84,19 @@ export default class DemoApp extends App {
     ];
   }
 
-  _afterRender () {
+  afterRender() {
     this.nextButton = this.el.querySelector('#next-step');
-    this.nextButton.addEventListener('click', e => this.nextStep(e));
+    this.nextButton.addEventListener('click', (e) => this.nextStep(e));
   }
 
-  startInterview () {
+  startInterview() {
     this.controller = new DemoController(this.el.querySelector('#step-container'));
 
     const currentView = this.views[this.currentStep];
     this.controller.setView(currentView.view, currentView.context);
   }
 
-  nextStep () {
+  nextStep() {
     this.currentStep += 1;
     this.currentStep %= 8;
 

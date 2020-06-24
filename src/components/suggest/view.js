@@ -6,11 +6,11 @@ import View from '../../base/view';
 import template from './template';
 
 export default class SuggestView extends View {
-  constructor (el, context) {
+  constructor(el, context) {
     context.data = context.patient.toSuggest();
 
     const handleSymptomsChange = (e) => {
-      let group = {};
+      const group = {};
       this.el.querySelectorAll('.input-symptom').forEach((item) => {
         // we do not mark any symptoms that comes from suggest as absent
         if (item.checked) {

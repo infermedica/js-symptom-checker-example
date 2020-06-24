@@ -3,27 +3,26 @@
  */
 
 export default class Controller {
-  constructor (el) {
+  constructor(el) {
     this.el = el;
   }
 
-  render () {
+  render() {
     this.view.render();
   }
 
-  setView (name, context) {
-    this._beforeSetView(name);
+  setView(name, context) {
+    this.beforeSetView(name);
     const ViewClass = this.viewMapper[name];
     this.view = new ViewClass(this.el, context);
     this.render();
   }
 
-  destroyView () {
+  destroyView() {
     this.view.destroy();
   }
 
-  _beforeSetView (name) {
+  beforeSetView(name) {  // eslint-disable-line
     // intentionally left blank
   }
 }
-

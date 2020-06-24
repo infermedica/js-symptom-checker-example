@@ -12,12 +12,18 @@ const template = (context) => {
               <label for="input-sex" class="col-sm-2 col-form-label">Sex</label>
               <div class="col-sm-10">      
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="sex-radio-inline-1" name="sex-radio-inline" class="input-sex custom-control-input" value="male" checked>
-                  <label class="custom-control-label" for="sex-radio-inline-1"><i class="fa fa-fw fa-male"></i> male</label>
+                  <input type="radio" id="sex-radio-inline-1" 
+                    name="sex-radio-inline" class="input-sex custom-control-input" value="male" checked>
+                  <label class="custom-control-label" for="sex-radio-inline-1">
+                    <i class="fa fa-fw fa-male"></i> male
+                  </label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="sex-radio-inline-2" name="sex-radio-inline" class="input-sex custom-control-input" value="female">
-                  <label class="custom-control-label" for="sex-radio-inline-2"><i class="fa fa-fw fa-female"></i> female</label>
+                  <input type="radio" id="sex-radio-inline-2" 
+                    name="sex-radio-inline" class="input-sex custom-control-input" value="female">
+                  <label class="custom-control-label" for="sex-radio-inline-2">
+                    <i class="fa fa-fw fa-female"></i> female
+                  </label>
                 </div>
               </div>
             </div>
@@ -28,7 +34,12 @@ const template = (context) => {
               </div>
             </div>
           </form>
-          <p class="text-muted small"><i class="fa fa-info-circle"></i> The sex and age attributes are two required elements of every request to /diagnosis. Typically this is the first question you should ask in your symptom checker. Read more <a target="_blank" href="https://developer.infermedica.com/docs/diagnosis#sex-and-age">here</a>.</p>
+          <p class="text-muted small">
+            <i class="fa fa-info-circle"></i>
+            The sex and age attributes are two required elements of every request to /diagnosis.
+            Typically this is the first question you should ask in your symptom checker. 
+            Read more
+            <a target="_blank" href="https://developer.infermedica.com/docs/diagnosis#sex-and-age">here</a>.</p>
         </div>
       `);
   });

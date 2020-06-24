@@ -3,17 +3,17 @@
  */
 
 export default class App {
-  constructor (el, template) {
+  constructor(el, template) {
     this.el = el;
     this.template = template;
   }
 
-  render () {
+  render() {
     this.el.innerHTML = this.template;
-    this._afterRender();
+    this.afterRender();
   }
 
-  _afterRender () {
+  afterRender() {  // eslint-disable-line
     // intentionally left blank
   }
 }

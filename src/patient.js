@@ -5,30 +5,30 @@
 import _ from 'lodash';
 
 export default class Patient {
-  constructor () {
+  constructor() {
     this.symptoms = {};
     this.sex = 'male';
     this.age = 30;
   }
 
-  setSex (sex) {
+  setSex(sex) {
     this.sex = sex;
   }
 
-  setAge (age) {
+  setAge(age) {
     this.age = age;
   }
 
-  addSymptomsGroup (group) {
+  addSymptomsGroup(group) {
     Object.assign(this.symptoms, group);
   }
 
-  removeSymptom (id) {
+  removeSymptom(id) {
     delete this.symptoms[id];
   }
 
-  toDiagnosis () {
-    let res = {
+  toDiagnosis() {
+    const res = {
       sex: this.sex,
       age: this.age,
       evidence: []
@@ -39,15 +39,13 @@ export default class Patient {
         if (choice === true) {
           return 'present';
         }
-        if (_.isUndefined(choice)) {
-          return 'unknown';
-        }
         if (choice === false) {
           return 'absent';
         }
+        return 'unknown';
       };
 
-      let diagnosisSymptom = {
+      const diagnosisSymptom = {
         id: symptomId,
         choice_id: getChoiceId(symptom.reported)
       };
@@ -69,7 +67,7 @@ export default class Patient {
     return res;
   }
 
-  toSuggest () {
+  toSuggest() {
     return {
       sex: this.sex,
       age: this.age,
@@ -79,7 +77,7 @@ export default class Patient {
     };
   }
 
-  reset () {
+  reset() {
     this.symptoms = {};
   }
 }
