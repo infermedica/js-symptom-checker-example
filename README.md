@@ -16,15 +16,15 @@ It uses Artificial Intelligence API provided by [Infermedica](https://infermedic
 
 The most recent Infermedica API documentation is always available on our [Developer Portal](https://developer.infermedica.com/).
 
-Do not hesitate to [contact us](support@infermedica.com) if you need assistance.
+Do not hesitate to [contact us](mailto:support@infermedica.com) if you need assistance.
 
-> Are you interested in this solution but lacking the developers' team who could ensure the highest quality of implementation process? Check out [Symptom Checker](https://infermedica.com/product/symptom-checker) developed by Infermedica and see how we can support you in its implementation. [Contact us](https://infermedica.com/contact) ➡️
+***Are you interested in this solution but lacking the developers' team who could ensure the highest quality of implementation process? Check out [Symptom Checker](https://infermedica.com/product/symptom-checker) developed by Infermedica and see how we can support you in its implementation. [Contact us](https://infermedica.com/contact)*** ➡️
 
 ## Getting started
 
 ### Providing API credentials
 
-First of all, you have to obtain your app-id and app-key to use API. To do so, please register at [infermedica's developer portal](https://developer.infermedica.com) to get the necessary credentials, then edit the file `src/settings.js`.
+First of all, you have to obtain your app-id and app-key to use API. To do so, please register at [Infermedica's Developer Portal](https://developer.infermedica.com) to get the necessary credentials, then edit the file `src/settings.js`.
 ```javascript
 const settings = {
   'app-id': 'your-id-here',
