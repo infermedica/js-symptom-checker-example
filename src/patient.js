@@ -8,7 +8,7 @@ export default class Patient {
   constructor() {
     this.symptoms = {};
     this.sex = 'male';
-    this.age = 30;
+    this.age = {value: 30};
   }
 
   setSex(sex) {
@@ -16,7 +16,7 @@ export default class Patient {
   }
 
   setAge(age) {
-    this.age = age;
+    this.age = {value: age};
   }
 
   addSymptomsGroup(group) {
@@ -50,15 +50,9 @@ export default class Patient {
         choice_id: getChoiceId(symptom.reported)
       };
 
-      if (symptom.initial) {
+      if (symptom.source === 'initial') {
         Object.assign(diagnosisSymptom, {
-          initial: true
-        });
-      }
-
-      if (symptom.related) {
-        Object.assign(diagnosisSymptom, {
-          related: true
+          source: 'initial'
         });
       }
 
@@ -70,10 +64,15 @@ export default class Patient {
   toSuggest() {
     return {
       sex: this.sex,
-      age: this.age,
-      selected: _.filter(_.keys(this.symptoms), (key) => {
-        return this.symptoms[key].reported === true;
-      })
+      age: this.age
+    };
+  }
+
+  toParse(text) {
+    return {
+      text,
+      sex: this.sex,
+      age: this.age
     };
   }
 
