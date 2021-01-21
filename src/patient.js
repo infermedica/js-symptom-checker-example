@@ -56,16 +56,19 @@ export default class Patient {
         });
       }
 
+      if (symptom.source === 'suggest') {
+        Object.assign(diagnosisSymptom, {
+          source: 'suggest'
+        });
+      }
+
       return diagnosisSymptom;
     });
     return res;
   }
 
   toSuggest() {
-    return {
-      sex: this.sex,
-      age: this.age
-    };
+    return this.toDiagnosis();
   }
 
   toParse(text) {
