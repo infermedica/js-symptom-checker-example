@@ -12,7 +12,7 @@ export default class NLPView extends View {
     const handleFeelChange = (e) => {
       const feel = e.target.value;
       if (feel) {
-        this.context.api.parse(feel).then((response) => {
+        this.context.api.parse(this.context.patient.toParse(feel)).then((response) => {
           return this.updateObservations(response.mentions);
         });
       }
@@ -65,7 +65,7 @@ export default class NLPView extends View {
 
       if (val.reported) {
         Object.assign(val, {
-          initial: true
+          source: 'initial'
         });
       }
       return [item.id, val];

@@ -14,7 +14,7 @@ export default class SuggestView extends View {
       this.el.querySelectorAll('.input-symptom').forEach((item) => {
         // we do not mark any symptoms that comes from suggest as absent
         if (item.checked) {
-          group[item.id] = {reported: true, related: true};
+          group[item.id] = {reported: true, source: 'suggest'};
         } else {
           // completely remove this symptom
           this.context.patient.removeSymptom(item.id);

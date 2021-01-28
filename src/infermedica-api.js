@@ -3,7 +3,7 @@
  */
 
 export default class InfermedicaApi {
-  constructor(appId, appKey, apiModel = 'infermedica-en', apiUrl = 'https://api.infermedica.com/v2/') {
+  constructor(appId, appKey, apiModel = 'infermedica-en', apiUrl = 'https://api.infermedica.com/v3/') {
     this.appId = appId;
     this.appKey = appKey;
 
@@ -50,16 +50,16 @@ export default class InfermedicaApi {
     return this.request('POST', url, data);
   }
 
-  getSymptoms() {
-    return this.get('symptoms');
+  getSymptoms(age) {
+    return this.get(`symptoms?age.value=${age.value}`);
   }
 
-  getRiskFactors() {
-    return this.get('risk_factors');
+  getRiskFactors(age) {
+    return this.get(`risk_factors?age.value=${age.value}`);
   }
 
-  parse(text) {
-    return this.post('parse', JSON.stringify({text}));
+  parse(data) {
+    return this.post('parse', JSON.stringify(data));
   }
 
   getSuggestedSymptoms(data) {
