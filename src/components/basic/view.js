@@ -12,7 +12,7 @@ export default class BasicView extends View {
     };
 
     const handleAgeChange = (e) => {
-      this.context.patient.setAge(e.target.value);
+      this.context.patient.setAge(e.target.valueAsNumber);
     };
 
     const binds = {
