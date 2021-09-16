@@ -4,7 +4,7 @@
 
 const template = `
   <div class="card">
-      <div class="card-header">
+      <header class="card-header">
           <i class="fa fa-user-md"></i> 
           Symptom Checker Example
           <span class="d-none d-sm-block float-right text-muted">
@@ -13,13 +13,13 @@ const template = `
               Infermedica
             </a>
           </span>
-      </div>
+      </header>
       <div id="step-container" class="card-block">
         <!-- dynamic content goes here -->
       </div>
-      <div class="card-footer">
+      <footer class="card-footer">
           <button id="next-step" class="btn btn-primary float-right">Next <i class="fa fa-chevron-right"></i></button>
-      </div>
+      </footer>
   </div>
 `;
 
