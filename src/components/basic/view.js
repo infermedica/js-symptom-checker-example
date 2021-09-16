@@ -12,7 +12,13 @@ export default class BasicView extends View {
     };
 
     const handleAgeChange = (e) => {
-      this.context.patient.setAge(e.target.value);
+      if (e.target.valueAsNumber < 0 || e.target.valueAsNumber > 130) {
+        document.getElementById('next-step').setAttribute('disabled', 'true');
+        document.getElementById('age-validation').removeAttribute('hidden');
+      } else {
+        document.getElementById('next-step').removeAttribute('disabled');
+        document.getElementById('age-validation').setAttribute('hidden', 'true');
+      }
     };
 
     const binds = {

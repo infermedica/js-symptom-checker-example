@@ -14,9 +14,9 @@ const template = `
             </a>
           </span>
       </header>
-      <div id="step-container" class="card-block">
+      <main id="step-container" class="card-block">
         <!-- dynamic content goes here -->
-      </div>
+      </main>
       <footer class="card-footer">
           <button id="next-step" class="btn btn-primary float-right">Next <i class="fa fa-chevron-right"></i></button>
       </footer>
