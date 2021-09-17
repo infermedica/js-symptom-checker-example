@@ -12,6 +12,7 @@ export default class BasicView extends View {
     };
 
     const handleAgeChange = (e) => {
+      this.context.patient.setAge(e.target.valueAsNumber);
       if (e.target.valueAsNumber < 0 || e.target.valueAsNumber > 130) {
         document.getElementById('next-step').setAttribute('disabled', 'true');
         document.getElementById('age-validation').removeAttribute('hidden');
