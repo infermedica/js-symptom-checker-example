@@ -33,6 +33,9 @@ const template = (context) => {
                 <input type="number" class="form-control" id="input-age" value="30">
               </div>
             </div>
+            <p id="age-validation" class="col-sm-6 alert alert-danger" hidden="true">
+              Please enter an age in the range 0-130.
+            </p>
           </form>
           <p class="text-muted small">
             <i class="fa fa-info-circle"></i>

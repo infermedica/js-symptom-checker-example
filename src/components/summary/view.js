@@ -11,31 +11,33 @@ export default class SummaryView extends View {
       let supporting = '';
       let conflicting = '';
 
-      for (const e of data.supporting_evidence) {
-        supporting += `<li><i class="text-success fa fa-fw fa-plus-circle"></i> ${e.common_name}</li>`;
-      }
+      if (data.supporting_evidence || data.conflicting_evidence) {
+        for (const e of data.supporting_evidence) {
+          supporting += `<li><i class="text-success fa fa-fw fa-plus-circle"></i> ${e.common_name}</li>`;
+        }
+        for (const e of data.conflicting_evidence) {
+          conflicting += `<li><i class="text-danger fa fa-fw fa-minus-circle"></i> ${e.common_name}</li>`;
+        }
 
-      for (const e of data.conflicting_evidence) {
-        conflicting += `<li><i class="text-danger fa fa-fw fa-minus-circle"></i> ${e.common_name}</li>`;
+        const base = `
+          <div class="row">
+            <div class="col-6">
+              <span class="badge badge-success"><i class="fa fa-fw fa-thumbs-up"></i>Evidence for</span>
+              <ul class="list-unstyled">
+                ${supporting}
+              </ul>
+            </div>
+            <div class="col-6">
+              <span class="badge badge-danger"><i class="fa fa-fw fa-thumbs-down"></i>Evidence against</span>
+              <ul class="list-unstyled">
+                ${conflicting}
+              </ul>
+            </div>
+          </div>
+         `;
+        return base;
       }
-
-      const base = `
-        <div class="row">
-          <div class="col-6">
-            <span class="badge badge-success"><i class="fa fa-fw fa-thumbs-up"></i>Evidence for</span>
-            <ul class="list-unstyled">
-              ${supporting}
-            </ul>
-          </div>
-          <div class="col-6">
-            <span class="badge badge-danger"><i class="fa fa-fw fa-thumbs-down"></i>Evidence against</span>
-            <ul class="list-unstyled">
-              ${conflicting}
-            </ul>
-          </div>
-        </div>
-       `;
-      return base;
+      return 'The maximum size of evidence reached.';
     };
 
     const handleExplainRequested = (e) => {

@@ -24,14 +24,14 @@ export default class CommonRisksView extends View {
     context.commonRiskFactors = ['p_7', 'p_28', 'p_10', 'p_9', 'p_264'];
 
     if (context.patient.sex === 'female') {
-      if (age > 45) {
+      if (age.value > 45) {
         addPostmenopause(context.commonRiskFactors);
       } else if (age >= 15) {
         addPregnancy(context.commonRiskFactors);
       }
     }
 
-    if (age > 49) {
+    if (age.value > 49) {
       addDiabetes(context.commonRiskFactors);
     }
 

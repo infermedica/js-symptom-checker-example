@@ -50,10 +50,6 @@ export default class InfermedicaApi {
     return this.request('POST', url, data);
   }
 
-  getSymptoms(age) {
-    return this.get(`symptoms?age.value=${age.value}`);
-  }
-
   getRiskFactors(age) {
     return this.get(`risk_factors?age.value=${age.value}`);
   }
